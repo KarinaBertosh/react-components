@@ -7,3 +7,15 @@
   flex-direction: column;
 }
 
+.button {
+  background-color: rgba(0, 0, 255, 0.2);
+  color: black;
+  border: 1px solid rgb(226, 226, 244);
+  width: 100px;
+  height: 40px;
+  box-shadow: 2px 2px 1px 1px rgba(12, 6, 141, 0.2);
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}

@@ -1,15 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './style.scss';
 
-function InfoPage(): JSX.Element {
-    const router = useNavigate();
+export const InfoPage = (): JSX.Element => {
 
     return (
-        <div className="header">
+        <div>
             About Us
         </div>
     );
 }
-
-export default InfoPage;

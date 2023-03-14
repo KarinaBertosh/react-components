@@ -1,15 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Card } from '../Card/Card';
+import { data } from '../cards';
+import { Cards } from '../Cards/Cards';
+import { Search } from '../Search/Search';
 import './style.scss';
 
-function StartPage(): JSX.Element {
-    const router = useNavigate();
+export const StartPage = (): JSX.Element => {
 
     return (
-        <div className="header">
-            Hi!
+        <div>
+            <Search />
+            <Cards />
         </div>
     );
-}
-
-export default StartPage;
+};

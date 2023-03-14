@@ -1,13 +1,11 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import './style.scss';
+import './style.scss'
 
-function ErrorPage() {
+export const ErrorPage = (): JSX.Element => {
   return (
-    <Container className="not-found-page">
+    <Container>
       <h2>Page not found</h2>
     </Container>
   );
 }
-
-export default ErrorPage;
