@@ -7,27 +7,30 @@ import {
 import App from './components/App';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import InfoPage from './components/InfoPage/InfoPage';
-import StartPage from './components/StartPage/StartPage';
+import MainPage from './components/MainPage/MainPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "main",
-    element: <StartPage />,
-  },
-  {
-    path: "info",
-    element: <InfoPage />,
-  },
-]);
+    children: [
+      {
+        path: "info",
+        element: <InfoPage />,
+      },
+      {
+        path: "main",
+        element: <MainPage />,
+      }
+    ],
+  }
+]
+);
 
 ReactDOM.render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
   document.getElementById('root'),
 );

@@ -6,10 +6,14 @@ import '../App.css';
 export class Header extends React.Component {
   render() {
     return (
-    <div className="header">
-      <button className="button"><Link style={{textDecoration: "none", color: 'black'}} to="/about" >About Us</Link></button>
-      <button className="button"><Link style={{textDecoration: "none", color: 'black'}} to="/main">Main page</Link></button>
-    </div>
-  );
+      <>
+        <div className="header">
+          <button className="button"><Link style={{ textDecoration: "none", color: 'black' }} to="info" >About Us</Link></button>
+          <button className="button"><Link style={{ textDecoration: "none", color: 'black' }} to="/main">Main page</Link></button>
+        </div>
+        <Outlet />
+      </>
+    );
+
   }
 }
