@@ -1,17 +1,31 @@
 import React from 'react';
-import {Card} from '../Card/Card';
+import { Card } from '../Card/Card';
 import { data } from '../cards';
-import './style.scss';
+import CardsGet from './CardsGet';
+import './style.css';
 
-export const Cards = (): JSX.Element => {
+export class Cards extends React.Component {
+  constructor() {
+    super('div');
+    this.render();
+  }
+
+  getCards() {
+    return data.cards.map((c) => ({
+      id: c.id,
+      title: c.title,
+      compound: c.compound,
+      price: c.price,
+      stock: c.stock,
+      photo: c.photo,
+    }));
+  }
+
+  render() {
     return (
-        <div className='cards'>
-            {data.cards && data.cards.map(((c) => {
-                 return (
-                    <Card card={c} key={c.id}/>
-                  )
-            }))}
-        </div>
-    );
+      <div>
+        <CardsGet cards={this.getCards()} />;
+      </div>);
+  }
 }
 

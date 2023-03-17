@@ -1,11 +1,13 @@
 import React from 'react';
 import './style.scss';
 
-export const InfoPage = (): JSX.Element => {
 
+export default class InfoPage extends React.Component {
+  render() {
     return (
-        <div>
-            About Us
-        </div>
+      <div>
+        About Us
+      </div>
     );
+  }
 }

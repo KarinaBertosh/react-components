@@ -1,11 +1,16 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import './style.scss'
+import { useRouteError } from "react-router-dom";
+import './style.scss';
 
-export const ErrorPage = (): JSX.Element => {
-  return (
-    <Container>
-      <h2>Page not found</h2>
-    </Container>
-  );
+export default class ErrorPage extends React.Component {
+  render() {
+    const error = useRouteError();
+    console.error(error);
+    return (
+      <div id="error-page">
+        <h1>Oops!</h1>
+        <p>Sorry, an unexpected error has occurred.</p>
+      </div>
+    );
+  }
 }

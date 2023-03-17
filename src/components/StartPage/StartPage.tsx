@@ -1,16 +1,13 @@
 import React from 'react';
-import { Card } from '../Card/Card';
-import { data } from '../cards';
-import { Cards } from '../Cards/Cards';
-import { Search } from '../Search/Search';
 import './style.scss';
 
-export const StartPage = (): JSX.Element => {
 
+export default class StartPage extends React.Component {
+  render() {
     return (
-        <div>
-            <Search />
-            <Cards />
-        </div>
+      <div>
+        Start
+      </div>
     );
-};
+  }
+}

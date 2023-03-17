@@ -1,21 +1,25 @@
 import React from 'react';
 import { ICard } from '../cards';
-import './style.scss';
+import './style.css';
 
-interface ICardProps {
-    card: ICard;
-}
+export class Card extends React.Component{
+  private c: ICard;
+  constructor(props: ICard) {
+    super('div');
+    this.c = props;
+    this.render();
+  }
 
-export const Card = (props: ICardProps): JSX.Element => {
-    const { card: c } = props;
-
+  render() {
     return (
-        <div className='one-card'>
-            <h3>{c.title}</h3>
-            <div className='m-t-5'>{c.compound}</div>
-            <div className='m-t-5 price'>Price: {c.price}</div>
-            <div className='m-t-5'>Stock: {c.stock}</div>
-            <img src={c.photo} alt={c.photo} />
-        </div>
+      <div className='one-card'>
+        <h3>{this.c.title}</h3>
+        <div className='m-t-5'>{this.c.compound}</div>
+        <div className='m-t-5 price'>Price: {this.c.price}</div>
+        <div className='m-t-5'>Stock: {this.c.stock}</div>
+        <img src={this.c.photo} alt={this.c.photo} />
+      </div>
     );
-};
+  }
+
+}

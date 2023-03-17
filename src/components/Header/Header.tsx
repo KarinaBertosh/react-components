@@ -1,13 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './style.scss';
+import { Outlet, Link } from "react-router-dom";
+import './style.css';
+import '../App.css';
 
-export const Header = (): JSX.Element => {
-  const router = useNavigate();
-  return (
+export class Header extends React.Component {
+  render() {
+    return (
     <div className="header">
-      <button onClick={() => router('/info')} className="button">About Us</button>
-      <button onClick={() => router('/main')} className="button">Main page</button>
+      <button className="button"><Link style={{textDecoration: "none", color: 'black'}} to="/about" >About Us</Link></button>
+      <button className="button"><Link style={{textDecoration: "none", color: 'black'}} to="/main">Main page</Link></button>
     </div>
   );
+  }
 }

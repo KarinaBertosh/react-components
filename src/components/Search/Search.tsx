@@ -1,13 +1,14 @@
 import React from 'react';
-import './style.scss';
+import './style.css';
 
-export const Search = (): JSX.Element => {
+export class Search extends React.Component {
+  render() {
     return (
-        <div>
-            <div className="search">
-                <input type="search" className="search__input"/>
-                <button className="button">Search</button>
-            </div>
-        </div>
+      <div className='search'>
+        <input type="search" className="search__input" />
+        <button className="button">Search</button>
+      </div>
     );
+  }
+
 }
