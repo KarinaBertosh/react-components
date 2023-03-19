@@ -1,11 +1,8 @@
 import React from 'react';
-// import { useRouteError } from "react-router-dom";
 
 
 export default class ErrorPage extends React.Component {
   render() {
-    // const error = useRouteError();
-    // console.error(error);
     return (
       <div id="error-page">
         <h1>Oops!</h1>

@@ -1,6 +1,7 @@
 {
   "name": "react-component",
   "version": "1.0.0",
+  "homepage": "http://karinabertosh.github.io/react-components/",
   "description": "react-component",
   "main": "webpack.config.js",
   "scripts": {
@@ -8,18 +9,12 @@
     "build": "webpack --config ./webpack.config.js --env mode=prod slash=./",
     "dev": "webpack --config ./webpack.config.js --env mode=dev slash=./",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KarinaBertosh/react-components.git"
+    "test": "jest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KarinaBertosh/react-components/issues"
-  },
-  "homepage": "http://karinabertosh.github.io/react-components/dist",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
@@ -38,6 +33,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "file-loader": "^6.2.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.5.0",

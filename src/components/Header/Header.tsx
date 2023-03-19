@@ -5,10 +5,9 @@ import './style.scss';
 
 export class Header extends React.Component {
   render() {
-    const currentUrl = window.location.pathname;
-    console.log(currentUrl);
-    const isAboutPage = () => currentUrl === '/info';
-    const isMainPage = () => currentUrl === '/';
+    const currentUrl = window.location.hash;
+    const isAboutPage = () => currentUrl === '#/info';
+    const isMainPage = () => currentUrl === '#/';
 
     return (
       <>
@@ -25,7 +24,7 @@ export class Header extends React.Component {
             </button>
           </Link>
         </div>
-        <h3>Current page: {currentUrl === '/' ? 'Main' : 'About'}</h3>
+        <h3>Current page: {currentUrl === '#/info' ? 'About' : 'Main'}</h3>
         <Outlet />
       </>
     );
