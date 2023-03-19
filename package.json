@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/KarinaBertosh/react-components/issues"
   },
-  "homepage": "https://KarinaBertosh.github.io/react-components/dist",
+  "homepage": "http://karinabertosh.github.io/react-components/dist",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",

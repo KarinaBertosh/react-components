@@ -11,7 +11,7 @@ import InfoPage from './components/InfoPage/InfoPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <App />,
     errorElement: <ErrorPage />,
   },
@@ -26,5 +26,5 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode >,
 );
