@@ -1,5 +1,5 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -7,30 +7,24 @@ import {
 import App from './components/App';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import InfoPage from './components/InfoPage/InfoPage';
-import MainPage from './components/MainPage/MainPage';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "info",
-        element: <InfoPage />,
-      },
-      {
-        path: "main",
-        element: <MainPage />,
-      }
-    ],
+  },
+  {
+    path: "/info",
+    element: <InfoPage />,
   }
 ]
 );
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
-ReactDOM.render(
-  <StrictMode>
+root.render(
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
-  document.getElementById('root'),
+  </React.StrictMode>,
 );

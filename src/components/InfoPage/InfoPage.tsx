@@ -1,16 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import './style.scss';
+import { Header } from '../Header/Header';
 
 
 export default class InfoPage extends React.Component {
   render() {
     return (
       <>
-        <Outlet />
+        <Header />
         <div>
           About us
         </div>
+        <Outlet />
       </>
     );
   }

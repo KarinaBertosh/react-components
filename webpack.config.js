@@ -8,20 +8,20 @@ module.exports = ({ mode, slash }) => {
     const isProductionMode = mode === 'prod';
     const isDev = !isProductionMode;
     const sl = String(slash);
-    const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+    const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
     const baseConfig = {
         mode: 'development',
         entry: path.resolve(__dirname, './src/index.tsx'),
         resolve: {
-            extensions: ['.jsx', '.tsx','.js', '.ts'],
+            extensions: ['.jsx', '.tsx', '.js', '.ts'],
         },
         optimization: {
             splitChunks: {
                 chunks: 'all'
             }
         },
-        plugins:[
+        plugins: [
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, './src/index.html'),
                 filename: 'index.html',
@@ -37,45 +37,49 @@ module.exports = ({ mode, slash }) => {
         module: {
             rules: [
                 {
-                    test: /\.css$/,
-                    use: ['style-loader', 'css-loader'],
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        "style-loader",
+                        "css-loader",
+                        "sass-loader",
+                    ],
                 },
                 {
-                    test:/\.(png|svg|jpg|jpeg|gif)$/,
+                    test: /\.(png|svg|jpg|jpeg|gif)$/,
                     use: 'file-loader'
                 },
                 {
-                    test:/\.(ttf|woff|woff2|eot)$/,
+                    test: /\.(ttf|woff|woff2|eot)$/,
                     use: 'file-loader'
                 },
                 {
-                    test: /\.jsx?$/, 
-                    exclude: /node_modules/, 
+                    test: /\.jsx?$/,
+                    exclude: /node_modules/,
                     loader: "babel-loader",
-                    options:{
-                        presets:["@babel/preset-react", "@babel/preset-env"] 
+                    options: {
+                        presets: ["@babel/preset-react", "@babel/preset-env"]
                     }
                 },
                 {
-                    test: /\.ts$/, 
-                    exclude: /node_modules/, 
+                    test: /\.ts$/,
+                    exclude: /node_modules/,
                     loader: "babel-loader",
-                    options:{
-                        presets:["@babel/preset-typescript", "@babel/preset-env"] 
+                    options: {
+                        presets: ["@babel/preset-typescript", "@babel/preset-env"]
                     }
                 },
                 {
-                    test: /\.tsx$/, 
-                    exclude: /node_modules/, 
+                    test: /\.tsx$/,
+                    exclude: /node_modules/,
                     loader: "babel-loader",
-                    options:{
-                        presets:["@babel/preset-react","@babel/preset-typescript", "@babel/preset-env"] 
+                    options: {
+                        presets: ["@babel/preset-react", "@babel/preset-typescript", "@babel/preset-env"]
                     }
                 }
-    
+
             ]
         }
-    }
+    };
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
 
     return merge(baseConfig, envConfig);

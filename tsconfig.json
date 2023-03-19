@@ -11,5 +11,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/jest.config.ts"],
   "exclude": ["node_modules"]
 }

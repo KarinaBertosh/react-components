@@ -1,11 +1,11 @@
 import React from 'react';
 import { ICard } from '../cards';
-import './style.css';
+import './style.scss';
 
-export class Card extends React.Component{
+export class Card extends React.Component {
   private c: ICard;
   constructor(props: ICard) {
-    super('div');
+    super(props);
     this.c = props;
     this.render();
   }
