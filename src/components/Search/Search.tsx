@@ -9,10 +9,13 @@ export class Search extends React.Component<Record<string, never>, ISearch> {
   constructor(props: any) {
     super(props);
 
+    let defaultValue = localStorage.getItem('value');
+    if (defaultValue) {
+      defaultValue = JSON.parse(defaultValue);
+    }
     this.state = {
-      valueChange: JSON.parse(localStorage.getItem('value') || ''),
+      valueChange: defaultValue ? defaultValue : '',
     };
-
   }
 
   saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
