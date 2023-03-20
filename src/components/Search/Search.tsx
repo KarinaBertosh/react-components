@@ -1,14 +1,18 @@
 import React from 'react';
 import './style.scss';
 
-export class Search extends React.Component<any, any> {
+interface ISearch {
+  valueChange: string;
+}
+
+export class Search extends React.Component<Record<string, never>, ISearch> {
   constructor(props: any) {
     super(props);
 
     this.state = {
-      valueChange: JSON.parse(localStorage.getItem("value")!) || '',
+      valueChange: JSON.parse(localStorage.getItem('value') || ''),
     };
-    
+
   }
 
   saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +23,7 @@ export class Search extends React.Component<any, any> {
   render() {
     return (
       <div className='search'>
-        <input type="search" className="search__input" value={this.state.valueChange} onChange={this.saveChange}/>
+        <input type="search" className="search__input" value={this.state.valueChange} onChange={this.saveChange} />
         <button className="button">Search</button>
       </div>
     );
