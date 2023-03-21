@@ -12,7 +12,7 @@ export class Card extends React.Component {
 
   render() {
     return (
-      <div className='one-card'>
+      <div className='custom-card'>
         <h3>{this.c.title}</h3>
         <div className='m-t-5'>{this.c.compound}</div>
         <div className='m-t-5 price'>Price: {this.c.price}</div>

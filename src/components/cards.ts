@@ -7,6 +7,17 @@ export interface ICard {
   photo: string,
 }
 
+export interface ICardForm {
+  currentName: string,
+  currentDate: string,
+  currentCountry: string,
+  currentAgreement: boolean,
+  currentMale: boolean,
+  currentFemale: boolean,
+  currentPhoto: any,
+}
+
+
 export const data: { cards: ICard[]; } = {
   cards:
     [
