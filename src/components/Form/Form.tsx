@@ -14,7 +14,7 @@ function validate(name: string, date: string, country: string, agreement: boolea
   if (date.length === 0) {
     errors.push("Select a date");
   }
-  if (country.length === 0) {
+  if (country.length === 0 || country === 'default') {
     errors.push("Choose the country");
   }
   if (agreement === false) {
@@ -130,8 +130,9 @@ export class Form extends React.Component {
           </label>
           <label>
             List of countries:
-            <select ref={this.state.country}>
-              <option>Czechia</option>
+            <select ref={this.state.country} defaultValue={'default'}>
+              <option disabled value={'default'}></option>
+              <option >Czechia</option>
               <option>Germany</option>
               <option>Poland</option>
             </select>
