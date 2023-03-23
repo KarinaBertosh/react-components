@@ -3,6 +3,18 @@ import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../cards';
 import './style.scss';
 
+interface IState {
+  name: string,
+  date: any,
+  country: any,
+  agreement: any,
+  male: any,
+  female: any,
+  photo: any,
+  cardsForm: [],
+  errors: [];
+}
+
 function validate(name: string, date: string, country: string, agreement: boolean, male: boolean, female: boolean, photo: any) {
   const errors = [];
   if (name.length === 0) {
@@ -30,7 +42,18 @@ function validate(name: string, date: string, country: string, agreement: boolea
   return errors;
 }
 
-export class Form extends React.Component {
+export class Form extends React.Component<{}, {
+  name: any,
+  date: any,
+  country: any,
+  agreement: any,
+  male: any,
+  female: any,
+  photo: any,
+  cardsForm: [],
+  errors: any,
+  currentName: string,
+}> {
   constructor(props: []) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,7 +102,7 @@ export class Form extends React.Component {
       currentPhoto: URL.createObjectURL(file),
     };
 
-    this.setState({ cardsForm: [...this.state.cardsForm, newCard],  errors: [] });
+    this.setState({ cardsForm: [...this.state.cardsForm, newCard], errors: [] });
     this.clearForm();
 
   }
