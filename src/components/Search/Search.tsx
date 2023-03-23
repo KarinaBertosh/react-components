@@ -8,7 +8,6 @@ interface ISearch {
 export class Search extends React.Component<Record<string, never>, ISearch> {
   constructor(props: Record<string, never>) {
     super(props);
-
     let defaultValue = localStorage.getItem('value');
     if (defaultValue) {
       defaultValue = JSON.parse(defaultValue);
@@ -31,5 +30,4 @@ export class Search extends React.Component<Record<string, never>, ISearch> {
       </div>
     );
   }
-
 }

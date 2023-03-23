@@ -2,7 +2,11 @@ import React from 'react';
 import { ICard } from '../cards';
 import './style.scss';
 
-export class Card extends React.Component {
+interface MyProps {
+  props: ICard;
+}
+
+export class Card extends React.Component<MyProps> {
   private c: ICard;
   constructor(props: ICard) {
     super(props);
@@ -12,7 +16,7 @@ export class Card extends React.Component {
 
   render() {
     return (
-      <div className='custom-card'>
+      <div className='custom-card' data-testid="card">
         <h3>{this.c.title}</h3>
         <div className='m-t-5'>{this.c.compound}</div>
         <div className='m-t-5 price'>Price: {this.c.price}</div>

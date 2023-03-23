@@ -1,19 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Header } from './Header';
+import { Route } from 'react-router-dom';
 
-test('render header', () => {
-    it('ddd', () => {
-        const a = render(<Header />);
-
-    });
-    it('ddd2', () => {
-        const a = render(<Header />);
-
+describe('render header', () => {
+    it('render header', async () => {
+        <Route>
+            render(<Header />)
+        </Route>;
     });
 });
-
-// jest.mock('react-router-dom', () => ({
-//   ...jest.requireActual('react-router-dom'),
-//   useNavigate: () => (jest.fn()),
-// }));

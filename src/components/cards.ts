@@ -1,4 +1,5 @@
 export interface ICard {
+  key?: string,
   id: string,
   title: string,
   compound: string,

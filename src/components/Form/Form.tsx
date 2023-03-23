@@ -115,12 +115,12 @@ export class Form extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-      <>
+      <div data-testid="form">
         <form onSubmit={this.handleSubmit} className="form">
           {errors.map((e: string) => (
             <p className='error' key={e}>Error: {e}</p>
           ))}
-          <label>
+          <label role='name'>
             Name:
             <input type="text" ref={this.state.name} />
           </label>
@@ -158,7 +158,7 @@ export class Form extends React.Component {
         <div className='cards'>
           {this.getCards()}
         </div>
-      </>
+      </div>
     );
   }
 }
