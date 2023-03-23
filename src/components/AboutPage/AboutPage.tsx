@@ -9,7 +9,7 @@ export default class AboutPage extends React.Component {
       <>
         <Header />
         <div>
-          Wonderland - this is a flower shop.
+          Wonderland - this is a flower shop!
           Our bouquets are created specifically to please all women. Our bouquets bring joy to both.
         </div>
         <Outlet />
