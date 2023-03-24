@@ -12,31 +12,38 @@ interface IState {
   female: any,
   photo: any,
   cardsForm: [],
-  errors: [];
+  errors: [],
 }
 
 function validate(name: string, date: string, country: string, agreement: boolean, male: boolean, female: boolean, photo: any) {
-  const errors = [];
+  const nameError = [];
+  const dateError = [];
+  const countryError = [];
+  const agreementError = [];
+  const genderError = [];
+  const photoError = [];
+  const errors = [nameError, dateError, countryError, agreementError, genderError, photoError];
+
   if (name.length === 0) {
-    errors.push("Name can't be empty");
+    nameError.push("Error: Name can't be empty");
   }
   if (name.length < 2) {
-    errors.push("Name is too short");
+    nameError.push("Error: Name is too short");
   }
   if (date.length === 0) {
-    errors.push("Select a date");
+    dateError.push("Error: Select a date");
   }
   if (country.length === 0 || country === 'default') {
-    errors.push("Choose the country");
+    countryError.push("Error: Choose the country");
   }
   if (agreement === false) {
-    errors.push(`To submit an order, you must agree to "I consent to my personal data"`);
+    agreementError.push(`Error: To submit an order, you must agree to "I consent to my personal data"`);
   }
   if (male === false && female === false) {
-    errors.push("You need to choose a gender");
+    genderError.push("Error: You need to choose a gender");
   }
   if (photo === undefined) {
-    errors.push("Add photo");
+    photoError.push("Error: Add photo");
   }
 
   return errors;
@@ -83,7 +90,8 @@ export class Form extends React.Component<{}, {
       this.state.female.current?.checked,
       this.state.photo.current?.files[0]
     );
-    if (errors.length > 0) {
+    if (errors[0].length > 0 || errors[1].length > 0 || errors[2].length > 0
+      || errors[3].length > 0 || errors[4].length > 0 || errors[5].length > 0) {
       this.setState({ errors });
       return;
     }
@@ -133,6 +141,7 @@ export class Form extends React.Component<{}, {
         />
       ))
     );
+
   }
 
   render() {
@@ -140,17 +149,16 @@ export class Form extends React.Component<{}, {
     return (
       <div data-testid="form">
         <form onSubmit={this.handleSubmit} className="form">
-          {errors.map((e: string) => (
-            <p className='error' key={e}>Error: {e}</p>
-          ))}
           <label role='name'>
             Name:
-            <input type="text" ref={this.state.name} data-testid="name"/>
+            <input type="text" ref={this.state.name} data-testid="name" />
           </label>
+          <p className='error' key={'0'}>{errors[0] ? `${errors[0]}` : ''}</p>
           <label>
             Date of delivery:
-            <input type="date" min="2023-03-28" max="2023-05-31" ref={this.state.date} data-testid="date"/>
+            <input type="date" min="2023-03-28" max="2023-05-31" ref={this.state.date} data-testid="date" />
           </label>
+          <div className='error' key={'1'}>{errors[1] ? `${errors[1]}` : ''}</div>
           <label>
             List of countries:
             <select ref={this.state.country} defaultValue={'default'}>
@@ -160,10 +168,12 @@ export class Form extends React.Component<{}, {
               <option>Poland</option>
             </select>
           </label>
+          <div className='error' key={'2'}>{errors[2] ? `${errors[2]}` : ''}</div>
           <label className='radio-and-checkbox'>
             I consent to my personal data
             <input type="checkbox" ref={this.state.agreement} />
           </label>
+          <div className='error' key={'3'}>{errors[3] ? `${errors[3]}` : ''}</div>
           <label className='radio-and-checkbox'>
             <input type="radio" id="male" name="gender" value="male"
               ref={this.state.male}></input>
@@ -172,11 +182,13 @@ export class Form extends React.Component<{}, {
               ref={this.state.female}></input>
             <label htmlFor="female">Female</label>
           </label>
+          <div className='error' key={'4'}>{errors[4] ? `${errors[4]}` : ''}</div>
           <label>
             Profile picture
             <input id="file" accept="image/*" type="file" ref={this.state.photo} />
           </label>
-          <input type="submit" value="Submit" className='button' data-testid="submit"/>
+          <div className='error' key={'5'}>{errors[5] ? `${errors[5]}` : ''}</div>
+          <input type="submit" value="Submit" className='button' data-testid="submit" />
         </form>
         <div className='cards'>
           {this.getCards()}
