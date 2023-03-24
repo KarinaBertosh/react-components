@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Form } from './Form';
 
 describe('render form', () => {
@@ -13,14 +13,12 @@ describe('render form', () => {
     expect(divText).toBeTruthy();
   });
 
-  it('Should capture name correctly onChange' , () => {
-    // const component = mount(<Form />)
-    // const input = component.find('input').at(0)
-    // input.instance().value = 'hello'
-    // input.simulate('change')
-    // expect(component.state().name).toEqual('hello')
-    // render(<Form />);
-    // const nameInput = screen.getByRole('name')
-    // expect(nameInput).toBeInTheDocument();
-  })
+  test("render button submit", () => {
+    const { getByTestId } = render(<Form />);
+
+    getByTestId("submit");
+
+    fireEvent.click(getByTestId("submit"));
+  });
 });
+

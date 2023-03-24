@@ -145,11 +145,11 @@ export class Form extends React.Component<{}, {
           ))}
           <label role='name'>
             Name:
-            <input type="text" ref={this.state.name} />
+            <input type="text" ref={this.state.name} data-testid="name"/>
           </label>
           <label>
             Date of delivery:
-            <input type="date" min="2023-03-28" max="2023-05-31" ref={this.state.date} />
+            <input type="date" min="2023-03-28" max="2023-05-31" ref={this.state.date} data-testid="date"/>
           </label>
           <label>
             List of countries:
@@ -176,7 +176,7 @@ export class Form extends React.Component<{}, {
             Profile picture
             <input id="file" accept="image/*" type="file" ref={this.state.photo} />
           </label>
-          <input type="submit" value="Submit" className='button' />
+          <input type="submit" value="Submit" className='button' data-testid="submit"/>
         </form>
         <div className='cards'>
           {this.getCards()}
