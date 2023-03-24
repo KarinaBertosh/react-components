@@ -3,19 +3,7 @@ import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../cards';
 import './style.scss';
 
-interface IState {
-  name: string,
-  date: any,
-  country: any,
-  agreement: any,
-  male: any,
-  female: any,
-  photo: any,
-  cardsForm: [],
-  errors: [],
-}
-
-function validate(name: string, date: string, country: string, agreement: boolean, male: boolean, female: boolean, photo: any) {
+function validate(name: string, date: string, country: string, agreement: boolean, male: boolean, female: boolean, photo: string) {
   const nameError = [];
   const dateError = [];
   const countryError = [];
@@ -57,12 +45,13 @@ export class Form extends React.Component<{}, {
   male: any,
   female: any,
   photo: any,
-  cardsForm: [],
+  cardsForm: Array<any>,
   errors: any,
   currentName: string,
 }> {
   constructor(props: []) {
     super(props);
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       name: React.createRef<HTMLInputElement>(),
@@ -78,7 +67,7 @@ export class Form extends React.Component<{}, {
   }
 
 
-  handleSubmit(event: any) {
+  handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
     const errors = validate(

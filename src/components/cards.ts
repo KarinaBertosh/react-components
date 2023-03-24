@@ -15,7 +15,7 @@ export interface ICardForm {
   currentAgreement: boolean,
   currentMale: boolean,
   currentFemale: boolean,
-  currentPhoto: any,
+  currentPhoto: string,
 }
 
 
