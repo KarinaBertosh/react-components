@@ -6,11 +6,9 @@
     background-color: rgba(0, 0, 255, 0.2);
     padding: 30px;
     border: 1px solid;
-    border-radius: 20px;
 }
 
 label {
-    margin-right: 5px;
     margin-right: 5px;
     display: flex;
     justify-content: space-between;
@@ -24,4 +22,19 @@ label {
 
 .error {
     color: red;
+}
+
+@media screen and (min-width: 320px) and (max-width: 560px) {
+    .form {
+        width: 280px;
+        margin: 10px auto;
+        background-color: rgba(0, 0, 255, 0.2);
+        padding: 5px;
+        border: 1px solid;
+    }
+
+    label {
+        margin-right: 2px;
+        padding: 2px;
+    }
 }

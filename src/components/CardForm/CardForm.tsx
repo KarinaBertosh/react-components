@@ -1,5 +1,6 @@
 import React from 'react';
 import { ICardForm } from '../cards';
+import './style.scss';
 
 export function CardForm(props: ICardForm): JSX.Element {
   return (
@@ -11,7 +12,7 @@ export function CardForm(props: ICardForm): JSX.Element {
       <div className='m-t-5'>Agreement: {props.currentAgreement === true ? 'yes' : 'no'} </div>
       <div className='m-t-5'>Male: {props.currentMale === true ? 'yes' : 'no'}</div>
       <div className='m-t-5'>Female: {props.currentFemale === true ? 'yes' : 'no'}</div>
-      <img src={props.currentPhoto} alt="photo" />
+      <img className='photo' src={props.currentPhoto} alt="photo" />
     </div>
   );
 }

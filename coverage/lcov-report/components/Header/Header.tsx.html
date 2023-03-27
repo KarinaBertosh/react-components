@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/20</span>
+                <span class='fraction'>15/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/13</span>
+                <span class='fraction'>3/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.7% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/17</span>
+                <span class='fraction'>12/21</span>
             </div>
         
             
@@ -112,18 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,9 +120,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -156,23 +146,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,63 +162,53 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { aboutPage, defaultPage, formPage } from '../App';
 import './style.scss';
 &nbsp;
 &nbsp;
-export class Header extends React.Component {
-  render() {
-    const currentUrl = window.location.hash;
-    const isAboutPage = () =&gt; currentUrl === `${net}${aboutPage}`;
-    const isMainPage = () =&gt; currentUrl === `${net}${defaultPage}`;
-    const isFormPage = () =&gt; currentUrl === `${net}${formPage}`;
-    const about = 'About';
-    const form = 'Form';
-    const main = 'Main';
-    const net = '#';
-    let header = '';
+export function Header(): JSX.Element {
+  const navigate = useNavigate();
+  const currentUrl = window.location.hash;
+  const isAboutPage = () =&gt; currentUrl === `${net}${aboutPage}`;
+  const isMainPage = () =&gt; currentUrl === `${net}${defaultPage}`;
+  const isFormPage = () =&gt; currentUrl === `${net}${formPage}`;
+  const about = 'About';
+  const form = 'Form';
+  const main = 'Main';
+  const net = '#';
+  let header = '';
 &nbsp;
-    switch (currentUrl) {
-      case `${net}${aboutPage}`:
-<span class="cstat-no" title="statement not covered" >        header = about;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
-      case `${net}${formPage}`:
-<span class="cstat-no" title="statement not covered" >        header = form;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
-      case `${net}${defaultPage}`:
-<span class="cstat-no" title="statement not covered" >        header = main;</span>
-<span class="cstat-no" title="statement not covered" >        break;</span>
-    }
-&nbsp;
-    return (
-      &lt;&gt;
-        &lt;div className="header"&gt;
-          &lt;div&gt;
-            &lt;Link style={{ textDecoration: "none", color: 'black' }} to={defaultPage}&gt;
-              &lt;button className="button" style={{ opacity: isMainPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }}&gt;
-                Main page
-              &lt;/button&gt;
-            &lt;/Link&gt;
-            &lt;Link style={{ textDecoration: "none", color: 'black', pointerEvents: isFormPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >'none' </span>: 'auto' }} to={formPage}&gt;
-              &lt;button className="button" style={{ opacity: isFormPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }}&gt;
-                Form page
-              &lt;/button&gt;
-            &lt;/Link&gt;
-            &lt;Link style={{ textDecoration: "none", color: 'black', pointerEvents: isAboutPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >'none' </span>: 'auto' }} to={aboutPage} &gt;
-              &lt;button className="button" style={{ opacity: isAboutPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }}&gt;
-                About Us
-              &lt;/button&gt;
-            &lt;/Link&gt;
-          &lt;/div&gt;
-          &lt;div&gt;Current page: {header}
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;Outlet /&gt;
-      &lt;/&gt;
-    );
-&nbsp;
+  switch (currentUrl) {
+    case `${net}${aboutPage}`:
+<span class="cstat-no" title="statement not covered" >      header = about;</span>
+<span class="cstat-no" title="statement not covered" >      break;</span>
+    case `${net}${formPage}`:
+<span class="cstat-no" title="statement not covered" >      header = form;</span>
+<span class="cstat-no" title="statement not covered" >      break;</span>
+    case `${net}${defaultPage}`:
+<span class="cstat-no" title="statement not covered" >      header = main;</span>
+<span class="cstat-no" title="statement not covered" >      break;</span>
   }
+&nbsp;
+  return (
+    &lt;&gt;
+      &lt;div className="header"&gt;
+        &lt;div&gt;
+          &lt;button className="button" style={{ opacity: isMainPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(defaultPage)}</span>&gt;
+            Main page
+          &lt;/button&gt;
+          &lt;button className="button" style={{ opacity: isFormPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(formPage)}</span>&gt;
+            Form page
+          &lt;/button&gt;
+          &lt;button className="button" style={{ opacity: isAboutPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(aboutPage)}</span>&gt;
+            About Us
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div&gt;Current page: {header}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -247,7 +217,7 @@ export class Header extends React.Component {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-24T10:11:14.653Z
+                at 2023-03-27T16:32:45.579Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

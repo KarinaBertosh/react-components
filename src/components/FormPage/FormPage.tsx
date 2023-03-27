@@ -8,7 +8,7 @@ export default function FormPage(): JSX.Element {
     <>
       <Header />
       <h3>
-        You can order flowers by filling out the form.
+        You can order flowers by filling out the form
       </h3>
       <Form />
     </>
