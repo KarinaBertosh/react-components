@@ -5,14 +5,12 @@ import { Search } from '../Search/Search';
 import './style.scss';
 
 
-export default class MainPage extends React.Component {
-  render() {
-    return (
-      <>
-        <Header />
-        <Search />
-        <Cards />
-      </>
-    );
-  }
+export default function MainPage(): JSX.Element {
+  return (
+    <>
+      <Header />
+      <Search />
+      <Cards />
+    </>
+  );
 }

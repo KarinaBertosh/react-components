@@ -4,9 +4,9 @@ import { data } from '../cards';
 import './style.scss';
 
 
-export class Cards extends React.Component {
+export function Cards(): JSX.Element {
 
-  getCards() {
+  const getCards = () => {
     return (
       data.cards.map((c) => (
         <Card
@@ -20,13 +20,11 @@ export class Cards extends React.Component {
         />
       ))
     );
-  }
+  };
 
-  render() {
-    return (
-      <div className="cards">
-        {this.getCards()}
-      </div>);
-  }
+  return (
+    <div className="cards">
+      {getCards()}
+    </div>);
 }
 

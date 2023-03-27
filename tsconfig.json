@@ -12,6 +12,6 @@
     "skipLibCheck": true
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/jest.config.ts"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/jest.config.ts", "src/withRouter.js"],
   "exclude": ["node_modules"]
 }

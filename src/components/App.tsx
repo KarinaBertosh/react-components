@@ -3,17 +3,17 @@ import MainPage from './MainPage/MainPage';
 import { Routes, Route } from 'react-router-dom';
 import AboutPage from './AboutPage/AboutPage';
 import ErrorPage from './ErrorPage/ErrorPage';
-import './style.scss';
 import FormPage from './FormPage/FormPage';
+import './style.scss';
+
 
 export const defaultPage = "/";
 export const aboutPage = "/about";
 export const formPage = "/form";
 export const errorPage = "*";
-// init 
 
-export default class App extends React.Component {
-  render() {
+
+export default function App(): JSX.Element {
     return (
       <>
         <Routes>
@@ -24,5 +24,4 @@ export default class App extends React.Component {
         </Routes>
       </>
     );
-  }
 }
