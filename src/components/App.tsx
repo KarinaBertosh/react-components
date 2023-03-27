@@ -10,6 +10,7 @@ export const defaultPage = "/";
 export const aboutPage = "/about";
 export const formPage = "/form";
 export const errorPage = "*";
+// init 
 
 export default class App extends React.Component {
   render() {
