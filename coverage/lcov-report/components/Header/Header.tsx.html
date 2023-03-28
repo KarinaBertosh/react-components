@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">64% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/24</span>
+                <span class='fraction'>16/25</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/7</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/21</span>
+                <span class='fraction'>13/22</span>
             </div>
         
             
@@ -112,7 +112,10 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,6 +133,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -142,6 +146,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,7 +167,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { aboutPage, defaultPage, formPage } from '../App';
 import './style.scss';
@@ -169,6 +175,7 @@ import './style.scss';
 &nbsp;
 export function Header(): JSX.Element {
   const navigate = useNavigate();
+  const [header, setHeader] = useState('');
   const currentUrl = window.location.hash;
   const isAboutPage = () =&gt; currentUrl === `${net}${aboutPage}`;
   const isMainPage = () =&gt; currentUrl === `${net}${defaultPage}`;
@@ -177,19 +184,21 @@ export function Header(): JSX.Element {
   const form = 'Form';
   const main = 'Main';
   const net = '#';
-  let header = '';
 &nbsp;
-  switch (currentUrl) {
-    case `${net}${aboutPage}`:
-<span class="cstat-no" title="statement not covered" >      header = about;</span>
-<span class="cstat-no" title="statement not covered" >      break;</span>
-    case `${net}${formPage}`:
-<span class="cstat-no" title="statement not covered" >      header = form;</span>
-<span class="cstat-no" title="statement not covered" >      break;</span>
-    case `${net}${defaultPage}`:
-<span class="cstat-no" title="statement not covered" >      header = main;</span>
-<span class="cstat-no" title="statement not covered" >      break;</span>
-  }
+  useEffect(() =&gt; {
+    switch (currentUrl) {
+      case `${net}${aboutPage}`:
+<span class="cstat-no" title="statement not covered" >        setHeader(about);</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      case `${net}${formPage}`:
+<span class="cstat-no" title="statement not covered" >        setHeader(form);</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      case `${net}${defaultPage}`:
+<span class="cstat-no" title="statement not covered" >        setHeader(main);</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+    }
+  });
+&nbsp;
 &nbsp;
   return (
     &lt;&gt;
@@ -217,7 +226,7 @@ export function Header(): JSX.Element {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-27T16:32:45.579Z
+                at 2023-03-28T13:44:53.473Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

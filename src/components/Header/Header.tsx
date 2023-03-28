@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { aboutPage, defaultPage, formPage } from '../App';
 import './style.scss';
@@ -6,6 +6,7 @@ import './style.scss';
 
 export function Header(): JSX.Element {
   const navigate = useNavigate();
+  const [header, setHeader] = useState('');
   const currentUrl = window.location.hash;
   const isAboutPage = () => currentUrl === `${net}${aboutPage}`;
   const isMainPage = () => currentUrl === `${net}${defaultPage}`;
@@ -14,19 +15,21 @@ export function Header(): JSX.Element {
   const form = 'Form';
   const main = 'Main';
   const net = '#';
-  let header = '';
 
-  switch (currentUrl) {
-    case `${net}${aboutPage}`:
-      header = about;
-      break;
-    case `${net}${formPage}`:
-      header = form;
-      break;
-    case `${net}${defaultPage}`:
-      header = main;
-      break;
-  }
+  useEffect(() => {
+    switch (currentUrl) {
+      case `${net}${aboutPage}`:
+        setHeader(about);
+        break;
+      case `${net}${formPage}`:
+        setHeader(form);
+        break;
+      case `${net}${defaultPage}`:
+        setHeader(main);
+        break;
+    }
+  });
+
 
   return (
     <>

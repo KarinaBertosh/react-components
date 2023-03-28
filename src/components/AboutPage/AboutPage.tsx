@@ -11,7 +11,6 @@ export default function AboutPage(): JSX.Element {
         Wonderland - this is a flower shop!
         Our bouquets are created specifically to please all women. Our bouquets bring joy to both.
       </div>
-      <Outlet />
     </>
   );
 }
