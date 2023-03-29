@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../cards';
 import { useForm, Controller } from "react-hook-form";
@@ -13,21 +13,32 @@ export function Form(): JSX.Element {
     const newCard = {
       currentName: data.name,
       currentDate: data.date,
-      currentCountry: data.country,
+      currentCountry: data.country.value,
       currentAgreement: data.agreement,
       gender: data.gender,
-      currentPhoto: data.photo,
+      currentPhoto: URL.createObjectURL(data.photo[0]),
     };
     setCardsForm([...cardsForm, newCard]);
+    reset({
+      name: '',
+      date: '',
+      country: '',
+      agreement: '',
+      photo: '',
+      gender: '',
+    }, {
+      keepErrors: true,
+      keepDirty: true,
+    });
   };
 
   const getCards = () => {
     return (
-      <div>
-        {cardsForm.map((c: ICardForm) => (
+      <div className='cards'>
+        {cardsForm.map((c: ICardForm, index) => (
           <div>
             <CardForm
-              key={`${c.currentName} + 1`}
+              key={`${c.currentName} + ${index}`}
               currentName={c.currentName}
               currentDate={c.currentDate}
               currentCountry={c.currentCountry}
@@ -36,13 +47,12 @@ export function Form(): JSX.Element {
               currentPhoto={c.currentPhoto}
             />
           </div>
-          // <div>{c.currentName}</div>
         ))}
       </div>
     );
   };
 
-  const { register, handleSubmit, formState: { errors }, control } = useForm({
+  const { register, handleSubmit, formState: { errors }, control, reset } = useForm({
     mode: "onBlur"
   });
   const handleRegistration = (data: any) => renderNewCard(data);
@@ -127,9 +137,7 @@ export function Form(): JSX.Element {
         <input type="submit" value="Submit" className='button' data-testid="submit" />
       </form>
 
-      {/* <div className='cards'> */}
-        {getCards()}
-      {/* </div> */}
+      {getCards()}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680083076750" clover="3.2.0">
-  <project timestamp="1680083076750" name="All files">
-    <metrics statements="60" coveredstatements="44" conditionals="27" coveredconditionals="18" methods="27" coveredmethods="19" elements="114" coveredelements="81" complexity="0" loc="60" ncloc="60" packages="11" files="12" classes="12"/>
+<coverage generated="1680095186640" clover="3.2.0">
+  <project timestamp="1680095186640" name="All files">
+    <metrics statements="61" coveredstatements="44" conditionals="27" coveredconditionals="18" methods="27" coveredmethods="19" elements="115" coveredelements="81" complexity="0" loc="61" ncloc="61" packages="11" files="12" classes="12"/>
     <package name="components">
       <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="I:\Karina\GitKarina\react-components\src\components\App.tsx">
@@ -56,23 +56,24 @@
       </file>
     </package>
     <package name="components.Form">
-      <metrics statements="14" coveredstatements="11" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
+      <metrics statements="15" coveredstatements="11" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
       <file name="Form.tsx" path="I:\Karina\GitKarina\react-components\src\components\Form\Form.tsx">
-        <metrics statements="14" coveredstatements="11" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
+        <metrics statements="15" coveredstatements="11" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
         <line num="10" count="6" type="stmt"/>
         <line num="12" count="5" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="24" count="5" type="stmt"/>
-        <line num="25" count="5" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="45" count="5" type="stmt"/>
-        <line num="48" count="5" type="stmt"/>
-        <line num="49" count="5" type="stmt"/>
-        <line num="51" count="5" type="stmt"/>
-        <line num="60" count="5" type="stmt"/>
-        <line num="67" count="5" type="stmt"/>
-        <line num="92" count="5" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="58" count="5" type="stmt"/>
+        <line num="59" count="5" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+        <line num="70" count="5" type="stmt"/>
+        <line num="77" count="5" type="stmt"/>
+        <line num="102" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.FormPage">

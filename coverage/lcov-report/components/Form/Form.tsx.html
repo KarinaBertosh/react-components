@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.33% </span>
+                <span class="strong">68.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/15</span>
+                <span class='fraction'>11/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">73.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/14</span>
+                <span class='fraction'>11/15</span>
             </div>
         
             
@@ -197,7 +197,15 @@
 <a name='L132'></a><a href='#L132'>132</a>
 <a name='L133'></a><a href='#L133'>133</a>
 <a name='L134'></a><a href='#L134'>134</a>
-<a name='L135'></a><a href='#L135'>135</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -218,6 +226,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
@@ -240,7 +259,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -329,9 +347,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useCallback, useEffect } from 'react';
 import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../cards';
 import { useForm, Controller } from "react-hook-form";
@@ -346,21 +362,32 @@ export function Form(): JSX.Element {
     const newCard = <span class="cstat-no" title="statement not covered" >{</span>
       currentName: data.name,
       currentDate: data.date,
-      currentCountry: data.country,
+      currentCountry: data.country.value,
       currentAgreement: data.agreement,
       gender: data.gender,
-      currentPhoto: data.photo,
+      currentPhoto: URL.createObjectURL(data.photo[0]),
     };
 <span class="cstat-no" title="statement not covered" >    setCardsForm([...cardsForm, newCard]);</span>
+<span class="cstat-no" title="statement not covered" >    reset({</span>
+      name: '',
+      date: '',
+      country: '',
+      agreement: '',
+      photo: '',
+      gender: '',
+    }, {
+      keepErrors: true,
+      keepDirty: true,
+    });
   };
 &nbsp;
   const getCards = () =&gt; {
     return (
-      &lt;div&gt;
-        {cardsForm.map(<span class="fstat-no" title="function not covered" >(c</span>: ICardForm) =&gt; (
+      &lt;div className='cards'&gt;
+        {cardsForm.map(<span class="fstat-no" title="function not covered" >(c</span>: ICardForm, index) =&gt; (
 <span class="cstat-no" title="statement not covered" >          &lt;div&gt;</span>
             &lt;CardForm
-              key={`${c.currentName} + 1`}
+              key={`${c.currentName} + ${index}`}
               currentName={c.currentName}
               currentDate={c.currentDate}
               currentCountry={c.currentCountry}
@@ -369,13 +396,12 @@ export function Form(): JSX.Element {
               currentPhoto={c.currentPhoto}
             /&gt;
           &lt;/div&gt;
-          // &lt;div&gt;{c.currentName}&lt;/div&gt;
         ))}
       &lt;/div&gt;
     );
   };
 &nbsp;
-  const { register, handleSubmit, formState: { errors }, control } = useForm({
+  const { register, handleSubmit, formState: { errors }, control, reset } = useForm({
     mode: "onBlur"
   });
   const handleRegistration = <span class="fstat-no" title="function not covered" >(d</span>ata: any) =&gt; <span class="cstat-no" title="statement not covered" >renderNewCard(data);</span>
@@ -460,9 +486,7 @@ export function Form(): JSX.Element {
         &lt;input type="submit" value="Submit" className='button' data-testid="submit" /&gt;
       &lt;/form&gt;
 &nbsp;
-      {/* &lt;div className='cards'&gt; */}
-        {getCards()}
-      {/* &lt;/div&gt; */}
+      {getCards()}
     &lt;/div&gt;
   );
 };</pre></td></tr></table></pre>
@@ -472,7 +496,7 @@ export function Form(): JSX.Element {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-29T09:44:36.717Z
+                at 2023-03-29T13:06:26.605Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
