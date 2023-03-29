@@ -1,0 +1,27 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 30px auto;
+    background-color: rgba(0, 0, 255, 0.2);
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+label {
+    margin-right: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+.radio-and-checkbox {
+    justify-content: flex-start;
+}
+
+.error {
+    color: red;
+}
