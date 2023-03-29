@@ -13,8 +13,7 @@ export interface ICardForm {
   currentDate: string,
   currentCountry: string,
   currentAgreement: boolean,
-  currentMale: boolean,
-  currentFemale: boolean,
+  gender: string,
   currentPhoto: string,
 }
 
