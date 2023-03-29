@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../cards';
 import { useForm, Controller } from "react-hook-form";
@@ -9,14 +9,14 @@ import './style.scss';
 export function Form(): JSX.Element {
   const [cardsForm, setCardsForm] = useState([]);
 
-  const renderNewCard = (data: any) => {
+  const renderNewCard = (data: ICardForm) => {
     const newCard = {
-      currentName: data.name,
-      currentDate: data.date,
-      currentCountry: data.country.value,
-      currentAgreement: data.agreement,
+      name: data.name,
+      date: data.date,
+      country: data.country.value,
+      agreement: data.agreement,
       gender: data.gender,
-      currentPhoto: URL.createObjectURL(data.photo[0]),
+      photo: URL.createObjectURL(data.photo[0]),
     };
     setCardsForm([...cardsForm, newCard]);
     reset({
@@ -35,16 +35,16 @@ export function Form(): JSX.Element {
   const getCards = () => {
     return (
       <div className='cards'>
-        {cardsForm.map((c: ICardForm, index) => (
+        {cardsForm.map((c: ICardForm, i) => (
           <div>
             <CardForm
-              key={`${c.currentName} + ${index}`}
-              currentName={c.currentName}
-              currentDate={c.currentDate}
-              currentCountry={c.currentCountry}
-              currentAgreement={c.currentAgreement}
+              key={i}
+              name={c.name}
+              date={c.date}
+              country={c.country}
+              agreement={c.agreement}
               gender={c.gender}
-              currentPhoto={c.currentPhoto}
+              photo={c.photo}
             />
           </div>
         ))}
@@ -55,8 +55,8 @@ export function Form(): JSX.Element {
   const { register, handleSubmit, formState: { errors }, control, reset } = useForm({
     mode: "onBlur"
   });
-  const handleRegistration = (data: any) => renderNewCard(data);
-  const handleError = (errors: any) => { };
+  const handleRegistration = (data: object) => renderNewCard(data);
+  const handleError = (errors: object) => { };
 
   const registerOptions = {
     name: { required: "Name is required" },

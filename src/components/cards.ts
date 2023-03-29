@@ -9,12 +9,12 @@ export interface ICard {
 }
 
 export interface ICardForm {
-  currentName: string,
-  currentDate: string,
-  currentCountry: string,
-  currentAgreement: boolean,
+  name: string,
+  date: string,
+  country: string,
+  agreement: boolean,
   gender: string,
-  currentPhoto: string,
+  photo: string,
 }
 
 
