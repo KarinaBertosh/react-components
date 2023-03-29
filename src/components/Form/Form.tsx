@@ -35,19 +35,17 @@ export function Form(): JSX.Element {
   const getCards = () => {
     return (
       <div className='cards'>
-        {cardsForm.map((c: ICardForm, i) => (
-          <div>
-            <CardForm
-              key={i}
-              name={c.name}
-              date={c.date}
-              country={c.country}
-              agreement={c.agreement}
-              gender={c.gender}
-              photo={c.photo}
-            />
-          </div>
-        ))}
+        {cardsForm.map((c: ICardForm, i) =>
+          <CardForm
+            key={c.name + i}
+            name={c.name}
+            date={c.date}
+            country={c.country}
+            agreement={c.agreement}
+            gender={c.gender}
+            photo={c.photo}
+          />
+        )}
       </div>
     );
   };
