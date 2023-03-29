@@ -38,15 +38,15 @@ function validate(name: string, date: string, country: string, agreement: boolea
 }
 
 export class Form extends React.Component<{}, {
-  name: any,
-  date: any,
-  country: any,
-  agreement: any,
-  male: any,
-  female: any,
-  photo: any,
-  cardsForm: Array<any>,
-  errors: any,
+  name: string,
+  date: string,
+  country: string,
+  agreement: boolean,
+  male: boolean,
+  female: boolean,
+  photo: string,
+  cardsForm: Array<Array>,
+  errors: Array<string>,
   currentName: string,
 }> {
   constructor(props: []) {
