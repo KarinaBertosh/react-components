@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.scss';
 
-// start task
+
 export function Search(): JSX.Element {
   let defaultValue = localStorage.getItem('value');
   if (defaultValue) {
