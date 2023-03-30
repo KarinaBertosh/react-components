@@ -57,12 +57,18 @@ export function Form(): JSX.Element {
   const handleError = (errors: object) => { };
 
   const registerOptions = {
-    name: { required: "Name is required" },
-    date: { required: "Date is required" },
-    country: { required: "Country is required" },
-    agreement: { required: "Agreement is required" },
+    name: {
+      required: "Name is required",
+      minLength: {
+        value: 3,
+        message: "Name is too short. Minimum 3 characters"
+      }
+    },
+    date: { required: "Select a date" },
+    country: { required: "Choose the country" },
+    agreement: { required: `To submit an order, you must agree to "I consent to my personal data` },
     photo: { required: "Photo is required" },
-    gender: { required: "Gender is required" },
+    gender: { required: "You need to choose a gender" },
   };
 
   const selectOptions = [
