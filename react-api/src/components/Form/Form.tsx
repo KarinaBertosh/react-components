@@ -6,7 +6,7 @@ import Select from "react-select";
 import './style.scss';
 
 
-export function Form(): JSX.Element {
+export const Form = (): JSX.Element => {
   const [cardsForm, setCardsForm] = useState([]);
 
   const renderNewCard = (data: ICardForm) => {

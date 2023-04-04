@@ -5,8 +5,14 @@ import { Header } from '../Header/Header';
 import './style.scss';
 
 
-export default function MainPage(): JSX.Element {
+export const MainPage = (): JSX.Element => {
   const [episode, setEpisode] = useState([]);
+  const [id, setId] = useState(16);
+  
+
+  const sendId = (id: number) => {
+    setId(id);
+  };
 
   let defaultValue = localStorage.getItem('value');
   if (defaultValue) {
@@ -35,6 +41,7 @@ export default function MainPage(): JSX.Element {
     setEpisode(episodeQuotes.data.results);
   };
 
+  
 
   return (
     <>
@@ -42,7 +49,7 @@ export default function MainPage(): JSX.Element {
       <div className='search'>
         <input type="search" className="search__input" value={valueChange} onChange={saveChange} />
       </div>
-      <Cards cards={episode} />
+      <Cards cards={episode} sendId={sendId} />
     </>
   );
 }

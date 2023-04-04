@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import FormPage from './FormPage';
+import { FormPage } from './FormPage';
 import { MemoryRouter } from 'react-router-dom';
 
 

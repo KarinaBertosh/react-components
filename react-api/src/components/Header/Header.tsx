@@ -4,7 +4,7 @@ import { aboutPage, defaultPage, formPage } from '../App';
 import './style.scss';
 
 
-export function Header(): JSX.Element {
+export const Header = (): JSX.Element => {
   const navigate = useNavigate();
   const [header, setHeader] = useState('');
   const currentUrl = window.location.hash;

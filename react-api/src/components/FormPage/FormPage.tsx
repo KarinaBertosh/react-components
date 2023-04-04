@@ -3,7 +3,7 @@ import { Form } from '../Form/Form';
 import { Header } from '../Header/Header';
 
 
-export default function FormPage(): JSX.Element {
+export const FormPage = (): JSX.Element =>  {
   return (
     <>
       <Header />

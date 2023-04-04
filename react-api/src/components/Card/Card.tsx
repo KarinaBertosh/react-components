@@ -2,7 +2,7 @@ import React from 'react';
 import { ICard } from '../cards';
 import './style.scss';
 
-export function Card(props: ICard): JSX.Element {
+export const Card = (props: ICard): JSX.Element => {
   return (
     <div className='custom-card' data-testid="card">
       <h3>{props.title}</h3>

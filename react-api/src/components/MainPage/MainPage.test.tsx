@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import MainPage from './MainPage';
+import { MainPage } from './MainPage';
 import { MemoryRouter } from 'react-router-dom';
 
 
