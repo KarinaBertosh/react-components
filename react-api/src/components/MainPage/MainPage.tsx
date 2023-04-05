@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
-import './style.scss';
 import { Modal } from '../Modal/Modal';
+import './style.scss';
 
 
 export const MainPage = (): JSX.Element => {
@@ -11,10 +11,14 @@ export const MainPage = (): JSX.Element => {
   const [card, setCard] = useState([]);
   const [id, setId] = useState(0);
   const [modal, setModal] = useState(false);
-  console.log(id);
 
   const sendId = (idCurrent: number) => {
     setId(idCurrent);
+  };
+
+  const setActive = () => {
+    setId(0);
+    setModal(!modal);
   };
 
   let defaultValue = localStorage.getItem('value');
@@ -28,14 +32,6 @@ export const MainPage = (): JSX.Element => {
     getCurrentCards();
   };
 
-  useEffect(() => {
-    const getCards = async () => {
-      const episodeQuotes = await fetch('https://rickandmortyapi.com/api/episode').then((response) => response.json());
-      setEpisode(episodeQuotes.results);
-    };
-    getCards();
-  }, []);
-
   const getCurrentCards = async () => {
     const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/?name=${valueChange}`);
     setEpisode(episodeQuotes.data.results);
@@ -47,13 +43,19 @@ export const MainPage = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (id > 0) {
+    const getCards = async () => {
+      const episodeQuotes = await fetch('https://rickandmortyapi.com/api/episode').then((response) => response.json());
+      setEpisode(episodeQuotes.results);
+    };
+    getCards();
+  }, []);
+
+  useEffect(() => {
+    if (id) {
       setModal(true);
       getOneCard();
     }
   });
-
-  console.log('card', card);
 
 
 
@@ -64,7 +66,7 @@ export const MainPage = (): JSX.Element => {
         <input type="search" className="search__input" value={valueChange} onChange={saveChange} />
       </div>
       <Cards cards={episode} sendId={sendId} />
-      <Modal active={modal} setActive={setModal} card={card}/>
+      <Modal active={modal} setActive={setActive} card={card} />
     </>
   );
 };
