@@ -37,10 +37,10 @@ export const Cards = (props: ICardsProps): JSX.Element => {
           <div key={c.id} className='cards' onClick={() => getID(c.id)}>
             <div className='custom-card'>
               <p>
-                Episode "{c.name}"
-              </p>
-              <p>
-                Air date: {c.air_date}
+                <b>
+                  Episode
+                </b>
+                "{c.name}"
               </p>
             </div>
           </div>);

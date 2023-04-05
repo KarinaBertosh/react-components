@@ -11,6 +11,7 @@ export const MainPage = (): JSX.Element => {
   const [card, setCard] = useState([]);
   const [id, setId] = useState(0);
   const [modal, setModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const sendId = (idCurrent: number) => {
     setId(idCurrent);
@@ -33,20 +34,26 @@ export const MainPage = (): JSX.Element => {
   };
 
   const getCurrentCards = async () => {
+    setIsLoading(true);
     const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/?name=${valueChange}`);
+    setIsLoading(false);
     setEpisode(episodeQuotes.data.results);
   };
 
   const getOneCard = async () => {
+    // setIsLoading(true);
     const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
+    // setIsLoading(false);
     setCard(episodeQuotes.data);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const getCards = async () => {
       const episodeQuotes = await fetch('https://rickandmortyapi.com/api/episode').then((response) => response.json());
       setEpisode(episodeQuotes.results);
     };
+    setIsLoading(false);
     getCards();
   }, []);
 
@@ -58,15 +65,22 @@ export const MainPage = (): JSX.Element => {
   });
 
 
-
   return (
     <>
       <Header />
       <div className='search'>
         <input type="search" className="search__input" value={valueChange} onChange={saveChange} />
       </div>
-      <Cards cards={episode} sendId={sendId} />
-      <Modal active={modal} setActive={setActive} card={card} />
+      {isLoading
+        ? <div className="spinner-border m-5" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+        :
+        <>
+          <Cards cards={episode} sendId={sendId} />
+          <Modal active={modal} setActive={setActive} card={card} />
+        </>
+      }
     </>
   );
 };

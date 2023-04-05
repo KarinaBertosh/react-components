@@ -7,8 +7,7 @@ export const AboutPage = (): JSX.Element =>  {
     <>
       <Header />
       <div>
-        Wonderland - this is a flower shop!
-        Our bouquets are created specifically to please all women. Our bouquets bring joy to both.
+      The Rick and Morty
       </div>
     </>
   );

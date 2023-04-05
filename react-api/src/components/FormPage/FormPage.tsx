@@ -8,7 +8,7 @@ export const FormPage = (): JSX.Element =>  {
     <>
       <Header />
       <h3>
-        You can order flowers by filling out the form
+      You can fill out the form to receive episodes
       </h3>
       <Form />
     </>
