@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICardForm } from '../cards';
+import { ICardForm } from '../types';
 import './style.scss';
 
 export const CardForm = (props: ICardForm): JSX.Element => {
@@ -14,4 +14,4 @@ export const CardForm = (props: ICardForm): JSX.Element => {
       <img className='photo' src={props.photo} alt="photo" />
     </div>
   );
-}
+};

@@ -16,3 +16,18 @@ export interface ICardForm {
   gender: string,
   photo: string,
 }
+
+export interface ICardsProps {
+  cards: ICardInApi[],
+  sendId: (id: number) => void,
+}
+
+export interface ICardInApi {
+  air_date: string,
+  characters: Array<string>,
+  created: string,
+  episode: string,
+  id: number,
+  name: string,
+  url: string,
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardForm } from '../CardForm/CardForm';
-import { ICardForm } from '../cards';
+import { ICardForm } from '../types';
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import './style.scss';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ICard } from '../cards';
+import { ICard } from '../types';
 import cross from '../../assets/cross.svg';
 import './style.scss';
 

@@ -1,21 +1,6 @@
 import React from 'react';
+import { ICardInApi, ICardsProps } from '../types';
 import './style.scss';
-
-
-interface ICardsProps {
-  cards: ICardInApi[],
-  sendId: (id: number) => void,
-}
-
-interface ICardInApi {
-  air_date: string,
-  characters: Array<string>,
-  created: string,
-  episode: string,
-  id: number,
-  name: string,
-  url: string,
-}
 
 
 export const Cards = (props: ICardsProps): JSX.Element => {
