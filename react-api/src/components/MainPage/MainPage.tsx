@@ -3,15 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
 import './style.scss';
+import { Modal } from '../Modal/Modal';
 
 
 export const MainPage = (): JSX.Element => {
   const [episode, setEpisode] = useState([]);
-  const [id, setId] = useState(16);
-  
+  const [card, setCard] = useState([]);
+  const [id, setId] = useState(0);
+  const [modal, setModal] = useState(false);
+  console.log(id);
 
-  const sendId = (id: number) => {
-    setId(id);
+  const sendId = (idCurrent: number) => {
+    setId(idCurrent);
   };
 
   let defaultValue = localStorage.getItem('value');
@@ -22,26 +25,37 @@ export const MainPage = (): JSX.Element => {
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueChange(e.target.value);
     localStorage.setItem("value", JSON.stringify(e.target.value));
-    fetchSearchData();
+    getCurrentCards();
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getCards = async () => {
       const episodeQuotes = await fetch('https://rickandmortyapi.com/api/episode').then((response) => response.json());
       setEpisode(episodeQuotes.results);
     };
-    fetchData();
+    getCards();
   }, []);
 
-  const fetchSearchData = async () => {
+  const getCurrentCards = async () => {
     const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/?name=${valueChange}`);
-    console.log(1, episodeQuotes.data.results);
-    console.log(2, episodeQuotes);
-
     setEpisode(episodeQuotes.data.results);
   };
 
-  
+  const getOneCard = async () => {
+    const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
+    setCard(episodeQuotes.data);
+  };
+
+  useEffect(() => {
+    if (id > 0) {
+      setModal(true);
+      getOneCard();
+    }
+  });
+
+  console.log('card', card);
+
+
 
   return (
     <>
@@ -50,6 +64,7 @@ export const MainPage = (): JSX.Element => {
         <input type="search" className="search__input" value={valueChange} onChange={saveChange} />
       </div>
       <Cards cards={episode} sendId={sendId} />
+      <Modal active={modal} setActive={setModal} card={card}/>
     </>
   );
-}
+};

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import '../Card/style.scss';
+import React from 'react';
 import './style.scss';
 
 
