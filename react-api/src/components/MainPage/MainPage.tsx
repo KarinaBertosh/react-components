@@ -5,7 +5,6 @@ import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
 import './style.scss';
 
-
 export const MainPage = (): JSX.Element => {
   const [episode, setEpisode] = useState([]);
   const [card, setCard] = useState([]);
@@ -26,23 +25,34 @@ export const MainPage = (): JSX.Element => {
   if (defaultValue) {
     defaultValue = JSON.parse(defaultValue);
   }
-  const [valueChange, setValueChange] = useState(defaultValue ? defaultValue : '');
+  const [valueChange, setValueChange] = useState(
+    defaultValue ? defaultValue : ''
+  );
+  let value;
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueChange(e.target.value);
-    localStorage.setItem("value", JSON.stringify(e.target.value));
     getCurrentCards();
   };
 
+  useEffect(() => {
+    value = valueChange;
+    return localStorage.setItem('value', JSON.stringify(value));
+  }, [valueChange]);
+
   const getCurrentCards = async () => {
     setIsLoading(true);
-    const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/?name=${valueChange}`);
+    const episodeQuotes = await axios(
+      `https://rickandmortyapi.com/api/episode/?name=${valueChange}`
+    );
     setIsLoading(false);
     setEpisode(episodeQuotes.data.results);
   };
 
   const getOneCard = async () => {
     // setIsLoading(true);
-    const episodeQuotes = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
+    const episodeQuotes = await axios(
+      `https://rickandmortyapi.com/api/episode/${id}`
+    );
     // setIsLoading(false);
     setCard(episodeQuotes.data);
   };
@@ -50,7 +60,9 @@ export const MainPage = (): JSX.Element => {
   useEffect(() => {
     setIsLoading(true);
     const getCards = async () => {
-      const episodeQuotes = await fetch('https://rickandmortyapi.com/api/episode').then((response) => response.json());
+      const episodeQuotes = await fetch(
+        'https://rickandmortyapi.com/api/episode'
+      ).then((response) => response.json());
       setEpisode(episodeQuotes.results);
     };
     setIsLoading(false);
@@ -64,23 +76,27 @@ export const MainPage = (): JSX.Element => {
     }
   });
 
-
   return (
     <>
       <Header />
-      <div className='search'>
-        <input type="search" className="search__input" value={valueChange} onChange={saveChange} />
+      <div className="search">
+        <input
+          type="search"
+          className="search__input"
+          value={valueChange}
+          onChange={saveChange}
+        />
       </div>
-      {isLoading
-        ? <div className="spinner-border m-5" role="status">
+      {isLoading ? (
+        <div className="spinner-border m-5" role="status">
           <span className="sr-only">Loading...</span>
         </div>
-        :
+      ) : (
         <>
           <Cards cards={episode} sendId={sendId} />
           <Modal active={modal} setActive={setActive} card={card} />
         </>
-      }
+      )}
     </>
   );
 };
