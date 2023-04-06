@@ -31,7 +31,7 @@ export const MainPage = (): JSX.Element => {
   let value;
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueChange(e.target.value);
-    getCurrentCards();
+    // getCurrentCards();
   };
 
   useEffect(() => {
@@ -76,6 +76,12 @@ export const MainPage = (): JSX.Element => {
     }
   });
 
+const handleKeyDown = (e: object) =>  {
+  if (e.key === 'Enter') {
+    getCurrentCards();
+  }
+}
+
   return (
     <>
       <Header />
@@ -85,6 +91,7 @@ export const MainPage = (): JSX.Element => {
           className="search__input"
           value={valueChange}
           onChange={saveChange}
+          onKeyDown={handleKeyDown}
         />
       </div>
       {isLoading ? (
