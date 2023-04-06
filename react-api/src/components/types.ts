@@ -31,3 +31,9 @@ export interface ICardInApi {
   name: string,
   url: string,
 }
+
+export interface IModal {
+  active: boolean;
+  setActive: any;
+  card: ICard;
+}

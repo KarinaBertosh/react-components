@@ -1,16 +1,25 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MainPage } from './MainPage';
+import { render, unmountComponentAtNode } from 'react-dom';
+import { act } from 'react-dom/test-utils';
 import { MemoryRouter } from 'react-router-dom';
+import { MainPage } from './MainPage';
 
+let container = null;
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
 
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
-describe('render main page', () => {
-  it('render main page', async () => {
-    render(
-      <MemoryRouter>
-        <MainPage />
-      </MemoryRouter>
-    );
+it('render main', () => {
+  act(() => {
+    render(<MainPage />, container);
   });
 });
+
+

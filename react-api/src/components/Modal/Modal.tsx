@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ICard } from '../types';
-import cross from '../../assets/cross.svg';
+import { ICard, IModal } from '../types';
+import cross from '../../assets/cross.png';
 import './style.scss';
-
-interface IModal {
-  active: boolean;
-  setActive: any;
-  card: ICard;
-}
 
 
 export const Modal = (props: IModal): JSX.Element => {
