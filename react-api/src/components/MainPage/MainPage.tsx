@@ -31,7 +31,6 @@ export const MainPage = (): JSX.Element => {
   let value;
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueChange(e.target.value);
-    // getCurrentCards();
   };
 
   useEffect(() => {

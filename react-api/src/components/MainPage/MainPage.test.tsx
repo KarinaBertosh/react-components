@@ -1,25 +1,26 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
-import { MemoryRouter } from 'react-router-dom';
 import { MainPage } from './MainPage';
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
-let container = null;
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
+// it('render api', async () => {
+//   render(
+//     <MemoryRouter>
+//       <MainPage />
+//     </MemoryRouter>
+//   );
+//   await waitFor(() => {
+//     screen.getByText('Dog');
+//   });
+// });
 
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it('render main', () => {
-  act(() => {
-    render(<MainPage />, container);
+it('render api', async () => {
+  render(
+    <MemoryRouter>
+      <MainPage />
+    </MemoryRouter>
+  );
+  await waitFor(() => {
+    screen.getByText('Dog');
   });
 });
-
-
