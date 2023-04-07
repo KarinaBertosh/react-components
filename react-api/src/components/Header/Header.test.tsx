@@ -1,27 +1,24 @@
-// import React from 'react';
 import React from 'react';
-import {  unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
 import { Header } from './Header';
-import { Route } from 'react-router-dom';
-
-let container = null;
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
+import { MemoryRouter } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 
 it('render header', () => {
-  act(() => {
-    <Route>
-      render(
-      <Header />, container);
-    </Route>;
-  });
+  render(
+    <MemoryRouter>
+      <Header />
+    </MemoryRouter>
+  );
+});
+
+it('render button in header', () => {
+  render(
+    <MemoryRouter>
+      <Header />
+    </MemoryRouter>
+  );
+  screen.getByText('Main page');
+  screen.getByText('Form page');
+  screen.getByText('About Us');
+  screen.getByText('Current page:');
 });

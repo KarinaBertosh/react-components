@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ICard, IModal } from '../types';
+import React from 'react';
+import { IModal } from '../types';
 import cross from '../../assets/cross.png';
 import './style.scss';
 

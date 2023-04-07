@@ -34,6 +34,6 @@ export interface ICardInApi {
 
 export interface IModal {
   active: boolean;
-  setActive: any;
+  setActive: () => boolean;
   card: ICard;
 }

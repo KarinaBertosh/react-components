@@ -54,7 +54,7 @@ export const Form = (): JSX.Element => {
     mode: "onBlur"
   });
   const handleRegistration = (data: object) => renderNewCard(data);
-  const handleError = (errors: object) => { };
+  const handleError = (errors: object) => {return errors };
 
   const registerOptions = {
     name: {

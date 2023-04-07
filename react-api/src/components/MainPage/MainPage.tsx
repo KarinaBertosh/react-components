@@ -1,9 +1,9 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
 import './style.scss';
+import { getCards, getCurrentCards, getOneCard } from '../api';
 
 export const MainPage = (): JSX.Element => {
   const [episode, setEpisode] = useState([]);
@@ -38,48 +38,28 @@ export const MainPage = (): JSX.Element => {
     return localStorage.setItem('value', JSON.stringify(value));
   }, [valueChange]);
 
-  const getCurrentCards = async () => {
-    setIsLoading(true);
-    const episodeQuotes = await axios(
-      `https://rickandmortyapi.com/api/episode/?name=${valueChange}`
-    );
-    setIsLoading(false);
-    setEpisode(episodeQuotes.data.results);
-  };
-
-  const getOneCard = async () => {
-    // setIsLoading(true);
-    const episodeQuotes = await axios(
-      `https://rickandmortyapi.com/api/episode/${id}`
-    );
-    // setIsLoading(false);
-    setCard(episodeQuotes.data);
-  };
-
   useEffect(() => {
     setIsLoading(true);
-    const getCards = async () => {
-      const episodeQuotes = await fetch(
-        'https://rickandmortyapi.com/api/episode'
-      ).then((response) => response.json());
-      setEpisode(episodeQuotes.results);
-    };
+    getCards().then((data) => setEpisode(data.results));
     setIsLoading(false);
-    getCards();
   }, []);
 
   useEffect(() => {
     if (id) {
       setModal(true);
-      getOneCard();
+      setIsLoading(true);
+      getOneCard(id).then((data) => setCard(data));
+      setIsLoading(false);
     }
   });
 
-const handleKeyDown = (e: object) =>  {
-  if (e.key === 'Enter') {
-    getCurrentCards();
-  }
-}
+  const handleKeyDown = (e: object) => {
+    if (e.key === 'Enter') {
+      setIsLoading(true);
+      getCurrentCards(valueChange).then((data) => setEpisode(data.results));
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
