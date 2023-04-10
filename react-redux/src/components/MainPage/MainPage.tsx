@@ -4,8 +4,14 @@ import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
 import './style.scss';
 import { getCards, getCurrentCards, getOneCard } from '../api';
+import { useAppDispatch, useAppSelector } from '../../hook/redux';
+import { userSlice } from '../../store/reducers/UserSlice';
 
 export const MainPage = (): JSX.Element => {
+  const { count } = useAppSelector((state) => state.userReducer);
+  const { increment } = userSlice.actions;
+  const dispatch = useAppDispatch();
+
   const [episode, setEpisode] = useState([]);
   const [card, setCard] = useState([]);
   const [id, setId] = useState(0);
@@ -64,6 +70,8 @@ export const MainPage = (): JSX.Element => {
   return (
     <>
       <Header />
+      <div>Count: {count}</div>
+      <button onClick={() => dispatch(increment(10))}>Increment </button>
       <div className="search">
         <input
           type="search"
