@@ -1,0 +1,26 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.custom-card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 255, 0.2);
+    margin: 5px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 255, 0.2);
+    padding: 10px
+}
+
+h3 {
+    text-shadow: 1px 1px 2px blue;
+    color: white;
+}
+
+.price {
+    font-weight: 700;
+}
