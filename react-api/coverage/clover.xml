@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680880753018" clover="3.2.0">
-  <project timestamp="1680880753018" name="All files">
-    <metrics statements="115" coveredstatements="75" conditionals="45" coveredconditionals="17" methods="45" coveredmethods="20" elements="205" coveredelements="112" complexity="0" loc="115" ncloc="115" packages="10" files="11" classes="11"/>
+<coverage generated="1681126081277" clover="3.2.0">
+  <project timestamp="1681126081277" name="All files">
+    <metrics statements="118" coveredstatements="77" conditionals="49" coveredconditionals="19" methods="46" coveredmethods="20" elements="213" coveredelements="116" complexity="0" loc="118" ncloc="118" packages="10" files="11" classes="11"/>
     <package name="components">
       <metrics statements="18" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
       <file name="App.tsx" path="E:\RSS\react-components\react-api\src\components\App.tsx">
@@ -128,9 +128,9 @@
       </file>
     </package>
     <package name="components.MainPage">
-      <metrics statements="36" coveredstatements="24" conditionals="10" coveredconditionals="5" methods="11" coveredmethods="5"/>
+      <metrics statements="39" coveredstatements="26" conditionals="14" coveredconditionals="7" methods="12" coveredmethods="5"/>
       <file name="MainPage.tsx" path="E:\RSS\react-components\react-api\src\components\MainPage\MainPage.tsx">
-        <metrics statements="36" coveredstatements="24" conditionals="10" coveredconditionals="5" methods="11" coveredmethods="5"/>
+        <metrics statements="39" coveredstatements="26" conditionals="14" coveredconditionals="7" methods="12" coveredmethods="5"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
@@ -153,20 +153,23 @@
         <line num="38" count="1" type="stmt"/>
         <line num="41" count="3" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="47" count="3" type="stmt"/>
-        <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="56" count="3" type="stmt"/>
-        <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="64" count="3" type="stmt"/>
+        <line num="43" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="52" count="3" type="stmt"/>
+        <line num="53" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="69" count="3" type="stmt"/>
       </file>
     </package>
     <package name="components.Modal">
