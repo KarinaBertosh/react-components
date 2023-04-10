@@ -40,7 +40,12 @@ export const MainPage = (): JSX.Element => {
 
   useEffect(() => {
     setIsLoading(true);
-    getCards().then((data) => setEpisode(data.results));
+    if (valueChange !== '') {
+      getCurrentCards(valueChange).then((data) => setEpisode(data.results));
+    }
+    if (valueChange === '') {
+      getCards().then((data) => setEpisode(data.results));
+    }
     setIsLoading(false);
   }, []);
 
