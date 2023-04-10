@@ -1,7 +1,7 @@
 import React from 'react';
 import { ICardForm } from '../types';
 import './style.scss';
-// start task
+
 export const CardForm = (props: ICardForm): JSX.Element => {
   return (
     <div className='custom-card'>
