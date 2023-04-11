@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CardForm } from '../CardForm/CardForm';
 import { ICardForm } from '../types';
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import './style.scss';
+import { useAppDispatch, useAppSelector } from '../../hook/redux';
+import { cardSlice } from '../../store/reducers/CardSlice';
 
 
 export const Form = (): JSX.Element => {
-  const [cardsForm, setCardsForm] = useState([]);
+  const { cardsInForm } = useAppSelector((state) => state.userReducer);
+  const { getCardsInForm } = cardSlice.actions;
+  const dispatch = useAppDispatch();
 
   const renderNewCard = (data: ICardForm) => {
     const newCard = {
@@ -18,7 +22,7 @@ export const Form = (): JSX.Element => {
       gender: data.gender,
       photo: URL.createObjectURL(data.photo[0]),
     };
-    setCardsForm([...cardsForm, newCard]);
+    dispatch(getCardsInForm([...cardsInForm, newCard]));
     reset({
       name: '',
       date: '',
@@ -35,7 +39,7 @@ export const Form = (): JSX.Element => {
   const getCards = () => {
     return (
       <div className='cards'>
-        {cardsForm.map((c: ICardForm, i) =>
+        {cardsInForm.map((c: ICardForm, i) =>
           <CardForm
             key={c.name + i}
             name={c.name}

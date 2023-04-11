@@ -50,7 +50,6 @@ export const MainPage = (): JSX.Element => {
       dispatch(fetchCurrentCards(searchText));
     }
   };
-  console.log(error);
 
   return (
     <>

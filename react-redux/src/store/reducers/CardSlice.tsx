@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICard } from '../../components/types';
+import { ICard, ICardForm } from '../../components/types';
 import { fetchCards, fetchCurrentCards, fetchOneCard } from './ActionCreators';
 
 interface UserState {
@@ -10,7 +10,7 @@ interface UserState {
   error: string;
   errorInCard: string;
   searchText: string;
-  getUsers: ICard[];
+  cardsInForm: ICardForm[];
 }
 
 const initialState: UserState = {
@@ -21,7 +21,7 @@ const initialState: UserState = {
   error: '',
   errorInCard: '',
   searchText: '',
-  getUsers: [],
+  cardsInForm: []
 };
 
 export const cardSlice = createSlice({
@@ -31,6 +31,9 @@ export const cardSlice = createSlice({
     updateSearchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
+    getCardsInForm(state, action: PayloadAction<ICardForm[]>) {
+      state.cardsInForm = action.payload;
+    }
   },
   extraReducers: {
     [fetchCards.fulfilled.type]: (state, action: PayloadAction<ICard[]>) => {

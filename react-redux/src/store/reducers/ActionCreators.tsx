@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { AppDispatch } from '../store';
-import { cardSlice } from './CardSlice';
 import { ICard } from '../../components/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
