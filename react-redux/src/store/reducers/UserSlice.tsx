@@ -1,11 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../../models/IUser';
+import { ICard } from '../../components/types';
 
 interface UserState {
-  users: IUser[];
+  users: ICard[];
   isLoading: boolean;
   error: string;
   searchText: string;
+  searchResults: ICard[];
 }
 
 const initialState: UserState = {
@@ -13,6 +15,7 @@ const initialState: UserState = {
   isLoading: false,
   error: '',
   searchText: '',
+  searchResults: []
 };
 
 export const userSlice = createSlice({
@@ -21,6 +24,9 @@ export const userSlice = createSlice({
   reducers: {
     updateSearchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
+    },
+    updateSearchResults(state, action: PayloadAction<ICard>) {
+      state.searchResults = action.payload;
     },
   },
 });

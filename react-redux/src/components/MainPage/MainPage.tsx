@@ -28,15 +28,10 @@ export const MainPage = (): JSX.Element => {
     setModal(!modal);
   };
 
-  let value;
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchText(e.target.value));
   };
 
-  useEffect(() => {
-    value = searchText;
-    return localStorage.setItem('value', JSON.stringify(value));
-  }, [searchText]);
 
   useEffect(() => {
     setIsLoading(true);
