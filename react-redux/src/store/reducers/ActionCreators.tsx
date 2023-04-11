@@ -4,18 +4,6 @@ import { cardSlice } from './CardSlice';
 import { ICard } from '../../components/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const fetchCards = () => async (dispatch: AppDispatch) => {
-//   try {
-//     dispatch(cardSlice.actions.getUsers());
-//     const response = await axios.get<ICard[]>(
-//       'https://rickandmortyapi.com/api/episode'
-//     );
-//     dispatch(cardSlice.actions.getUsersIsSuccess(response.data.results));
-//   } catch (e) {
-//     dispatch(cardSlice.actions.getUsersIsError(e.message));
-//   }
-// };
-
 export const fetchCards = createAsyncThunk(
   'cards/fetchAll',
   async (_, thunkAPI) => {
@@ -29,3 +17,18 @@ export const fetchCards = createAsyncThunk(
     }
   }
 );
+
+export const fetchCurrentCards = createAsyncThunk(
+    'cards/fetchCurrent',
+    async (valueChange: string, thunkAPI) => {
+      try {
+        const response = await axios.get<ICard[]>(
+          `https://rickandmortyapi.com/api/episode/?name=${valueChange}`
+        );        
+        return response.data.results;
+      } catch (e) {
+        return thunkAPI.rejectWithValue('Failed to load cards');
+      }
+    }
+  );
+

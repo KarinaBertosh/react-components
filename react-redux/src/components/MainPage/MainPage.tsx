@@ -5,7 +5,7 @@ import { Modal } from '../Modal/Modal';
 import { getCurrentCards, getOneCard } from '../api';
 import { useAppDispatch, useAppSelector } from '../../hook/redux';
 import { cardSlice } from '../../store/reducers/CardSlice';
-import { fetchCards } from '../../store/reducers/ActionCreators';
+import { fetchCards, fetchCurrentCards } from '../../store/reducers/ActionCreators';
 import './style.scss';
 
 export const MainPage = (): JSX.Element => {
@@ -37,25 +37,20 @@ export const MainPage = (): JSX.Element => {
   // console.log(cards);
 
   useEffect(() => {
-    // setIsLoading(true);
     dispatch(fetchCards());
-    // setIsLoading(false);
   }, []);
 
   useEffect(() => {
     if (id) {
       setModal(true);
-      // setIsLoading(true);
       getOneCard(id).then((data) => setCard(data));
-      // setIsLoading(false);
     }
   });
 
   const handleKeyDown = (e: object) => {
     if (e.key === 'Enter') {
-      // setIsLoading(true);
-      getCurrentCards(searchText).then((data) => setEpisode(data.results));
-      // setIsLoading(false);
+      // getCurrentCards(searchText).then((data) => setEpisode(data.results));
+      dispatch(fetchCurrentCards(searchText));
     }
   };
 
