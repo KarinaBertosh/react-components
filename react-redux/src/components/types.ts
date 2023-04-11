@@ -36,4 +36,7 @@ export interface IModal {
   active: boolean;
   setActive: () => boolean;
   card: ICard;
+  isLoading: boolean;
+  error: string;
+  
 }

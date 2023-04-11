@@ -2,24 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
-import { getCurrentCards, getOneCard } from '../api';
 import { useAppDispatch, useAppSelector } from '../../hook/redux';
 import { cardSlice } from '../../store/reducers/CardSlice';
-import { fetchCards, fetchCurrentCards } from '../../store/reducers/ActionCreators';
+import { fetchCards, fetchCurrentCards, fetchOneCard } from '../../store/reducers/ActionCreators';
 import './style.scss';
 
 export const MainPage = (): JSX.Element => {
   const { searchText } = useAppSelector((state) => state.userReducer);
-  const { cards, isLoading, error } = useAppSelector(
+  const { cards, card, isLoading, error, isLoadingCard, errorInCard } = useAppSelector(
     (state) => state.userReducer
   );
   const { updateSearchText } = cardSlice.actions;
   const dispatch = useAppDispatch();
 
-  const [card, setCard] = useState([]);
   const [id, setId] = useState(0);
   const [modal, setModal] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const sendId = (idCurrent: number) => {
     setId(idCurrent);
@@ -34,7 +31,6 @@ export const MainPage = (): JSX.Element => {
     dispatch(updateSearchText(e.target.value));
   };
 
-  // console.log(cards);
 
   useEffect(() => {
     dispatch(fetchCards());
@@ -43,13 +39,12 @@ export const MainPage = (): JSX.Element => {
   useEffect(() => {
     if (id) {
       setModal(true);
-      getOneCard(id).then((data) => setCard(data));
+      dispatch(fetchOneCard(id));
     }
   });
 
   const handleKeyDown = (e: object) => {
     if (e.key === 'Enter') {
-      // getCurrentCards(searchText).then((data) => setEpisode(data.results));
       dispatch(fetchCurrentCards(searchText));
     }
   };
@@ -70,7 +65,8 @@ export const MainPage = (): JSX.Element => {
       {error && <h1>{error}</h1>}
       <>
         <Cards cards={cards} sendId={sendId} />
-        <Modal active={modal} setActive={setActive} card={card} />
+        <Modal active={modal} setActive={setActive} card={card} error={errorInCard}/>
+       
       </>
     </>
   );

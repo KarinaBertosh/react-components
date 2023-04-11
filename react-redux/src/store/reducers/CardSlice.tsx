@@ -1,19 +1,25 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ICard } from '../../components/types';
-import { fetchCards, fetchCurrentCards } from './ActionCreators';
+import { fetchCards, fetchCurrentCards, fetchOneCard } from './ActionCreators';
 
 interface UserState {
   cards: ICard[];
+  card: ICard[];
   isLoading: boolean;
+  isLoadingCard: boolean;
   error: string;
+  errorInCard: string;
   searchText: string;
   getUsers: ICard[];
 }
 
 const initialState: UserState = {
   cards: [],
+  card: [],
   isLoading: false,
+  isLoadingCard: false,
   error: '',
+  errorInCard: '',
   searchText: '',
   getUsers: [],
 };
@@ -40,7 +46,10 @@ export const cardSlice = createSlice({
       state.error = action.payload;
     },
 
-    [fetchCurrentCards.fulfilled.type]: (state, action: PayloadAction<ICard[]>) => {
+    [fetchCurrentCards.fulfilled.type]: (
+      state,
+      action: PayloadAction<ICard[]>
+    ) => {
       state.isLoading = false;
       state.error = '';
       state.cards = action.payload;
@@ -48,11 +57,26 @@ export const cardSlice = createSlice({
     [fetchCurrentCards.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [fetchCurrentCards.rejected.type]: (state, action: PayloadAction<string>) => {
+    [fetchCurrentCards.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.isLoading = true;
       state.error = action.payload;
     },
 
+    [fetchOneCard.fulfilled.type]: (state, action: PayloadAction<ICard[]>) => {
+      state.isLoadingCard = false;
+      state.errorInCard = '';
+      state.card = action.payload;
+    },
+    [fetchOneCard.pending.type]: (state) => {
+      state.isLoadingCard = true;
+    },
+    [fetchOneCard.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isLoadingCard = true;
+      state.errorInCard = action.payload;
+    },
   },
 });
 
