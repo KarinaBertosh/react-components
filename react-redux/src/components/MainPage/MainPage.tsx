@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
-import './style.scss';
 import { getCards, getCurrentCards, getOneCard } from '../api';
 import { useAppDispatch, useAppSelector } from '../../hook/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
+import './style.scss';
 
 export const MainPage = (): JSX.Element => {
-  const { count } = useAppSelector((state) => state.userReducer);
-  const { increment } = userSlice.actions;
+  const { searchText } = useAppSelector((state) => state.userReducer);
+  const { updateSearchText } = userSlice.actions;
   const dispatch = useAppDispatch();
+  console.log(searchText);
 
   const [episode, setEpisode] = useState([]);
   const [card, setCard] = useState([]);
@@ -27,22 +28,15 @@ export const MainPage = (): JSX.Element => {
     setModal(!modal);
   };
 
-  let defaultValue = localStorage.getItem('value');
-  if (defaultValue) {
-    defaultValue = JSON.parse(defaultValue);
-  }
-  const [valueChange, setValueChange] = useState(
-    defaultValue ? defaultValue : ''
-  );
   let value;
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValueChange(e.target.value);
+    dispatch(updateSearchText(e.target.value));
   };
 
   useEffect(() => {
-    value = valueChange;
+    value = searchText;
     return localStorage.setItem('value', JSON.stringify(value));
-  }, [valueChange]);
+  }, [searchText]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -62,7 +56,7 @@ export const MainPage = (): JSX.Element => {
   const handleKeyDown = (e: object) => {
     if (e.key === 'Enter') {
       setIsLoading(true);
-      getCurrentCards(valueChange).then((data) => setEpisode(data.results));
+      getCurrentCards(searchText).then((data) => setEpisode(data.results));
       setIsLoading(false);
     }
   };
@@ -70,13 +64,11 @@ export const MainPage = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div>Count: {count}</div>
-      <button onClick={() => dispatch(increment(10))}>Increment </button>
       <div className="search">
         <input
           type="search"
           className="search__input"
-          value={valueChange}
+          value={searchText}
           onChange={saveChange}
           onKeyDown={handleKeyDown}
         />
