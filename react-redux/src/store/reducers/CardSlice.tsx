@@ -17,7 +17,7 @@ const initialState: UserState = {
   getUsers: []
 };
 
-export const userSlice = createSlice({
+export const cardSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
@@ -39,4 +39,4 @@ export const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
+export default cardSlice.reducer;

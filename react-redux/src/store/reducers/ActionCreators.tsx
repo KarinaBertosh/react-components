@@ -1,19 +1,21 @@
 import axios from 'axios';
 import { AppDispatch } from '../store';
-import { userSlice } from './CardSlice';
+import { cardSlice } from './CardSlice';
 import { ICard } from '../../components/types';
 
 export const fetchCards = () => async (dispatch: AppDispatch) => {
   try {
-    dispatch(userSlice.actions.getUsers());
+    dispatch(cardSlice.actions.getUsers());
     const response = await axios.get<ICard[]>(
       'https://rickandmortyapi.com/api/episode'
     );
-    dispatch(userSlice.actions.getUsersIsSuccess(response.data.results));
+    dispatch(cardSlice.actions.getUsersIsSuccess(response.data.results));
   } catch (e) {
-    dispatch(userSlice.actions.getUsersIsError(e.message));
+    dispatch(cardSlice.actions.getUsersIsError(e.message));
   }
 };
+
+
 
 
 
