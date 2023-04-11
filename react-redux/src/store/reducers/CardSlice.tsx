@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ICard } from '../../components/types';
+import { fetchCards } from './ActionCreators';
 
 interface UserState {
   cards: ICard[];
@@ -14,7 +15,7 @@ const initialState: UserState = {
   isLoading: false,
   error: '',
   searchText: '',
-  getUsers: []
+  getUsers: [],
 };
 
 export const cardSlice = createSlice({
@@ -24,15 +25,17 @@ export const cardSlice = createSlice({
     updateSearchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
-    getUsers(state) {
-      state.isLoading = true;
-    },
-    getUsersIsSuccess(state, action: PayloadAction<ICard[]>) {
+  },
+  extraReducers: {
+    [fetchCards.fulfilled.type]: (state, action: PayloadAction<ICard[]>) => {
       state.isLoading = false;
       state.error = '';
       state.cards = action.payload;
     },
-    getUsersIsError(state, action: PayloadAction<string>) {
+    [fetchCards.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchCards.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = action.payload;
     },
