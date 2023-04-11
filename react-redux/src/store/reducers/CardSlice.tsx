@@ -1,32 +1,40 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IUser } from '../../models/IUser';
 import { ICard } from '../../components/types';
 
 interface UserState {
-  users: ICard[];
+  cards: ICard[];
   isLoading: boolean;
   error: string;
   searchText: string;
-  searchResults: ICard[];
+  getUsers: ICard[];
 }
 
 const initialState: UserState = {
-  users: [],
+  cards: [],
   isLoading: false,
   error: '',
   searchText: '',
-  searchResults: []
+  getUsers: []
 };
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: 'cards',
   initialState,
   reducers: {
     updateSearchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
-    updateSearchResults(state, action: PayloadAction<ICard>) {
-      state.searchResults = action.payload;
+    getUsers(state) {
+      state.isLoading = true;
+    },
+    getUsersIsSuccess(state, action: PayloadAction<ICard[]>) {
+      state.isLoading = false;
+      state.error = '';
+      state.cards = action.payload;
+    },
+    getUsersIsError(state, action: PayloadAction<string>) {
+      state.isLoading = true;
+      state.error = action.payload;
     },
   },
 });

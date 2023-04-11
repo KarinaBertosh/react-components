@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Cards } from '../Cards/Cards';
 import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
-import { getCards, getCurrentCards, getOneCard } from '../api';
+import {  getCurrentCards, getOneCard } from '../api';
 import { useAppDispatch, useAppSelector } from '../../hook/redux';
-import { userSlice } from '../../store/reducers/UserSlice';
+import { userSlice } from '../../store/reducers/CardSlice';
 import './style.scss';
+import { fetchCards } from '../../store/reducers/ActionCreators';
 
 export const MainPage = (): JSX.Element => {
   const { searchText } = useAppSelector((state) => state.userReducer);
+  const { cards } = useAppSelector((state) => state.userReducer);
   const { updateSearchText } = userSlice.actions;
   const dispatch = useAppDispatch();
-  console.log(searchText);
 
-  const [episode, setEpisode] = useState([]);
   const [card, setCard] = useState([]);
   const [id, setId] = useState(0);
   const [modal, setModal] = useState(false);
@@ -32,10 +32,11 @@ export const MainPage = (): JSX.Element => {
     dispatch(updateSearchText(e.target.value));
   };
 
+  // console.log(cards);
 
   useEffect(() => {
     setIsLoading(true);
-    getCards().then((data) => setEpisode(data.results));
+    dispatch(fetchCards());
     setIsLoading(false);
   }, []);
 
@@ -74,7 +75,7 @@ export const MainPage = (): JSX.Element => {
         </div>
       ) : (
         <>
-          <Cards cards={episode} sendId={sendId} />
+          <Cards cards={cards} sendId={sendId} />
           <Modal active={modal} setActive={setActive} card={card} />
         </>
       )}
