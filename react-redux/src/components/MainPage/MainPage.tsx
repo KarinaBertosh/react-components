@@ -23,6 +23,8 @@ export const MainPage = (): JSX.Element => {
 
   const sendId = (idCurrent: number) => {
     setId(idCurrent);
+    setModal(true);
+    dispatch(fetchOneCard(idCurrent));
   };
 
   const setActive = () => {
@@ -38,13 +40,6 @@ export const MainPage = (): JSX.Element => {
     dispatch(fetchCards());
     dispatch(fetchCurrentCards(searchText));
   }, []);
-
-  useEffect(() => {
-    if (id) {
-      setModal(true);
-      dispatch(fetchOneCard(id));
-    }
-  });
 
   const handleKeyDown = (e: object) => {
     if (e.key === 'Enter') {

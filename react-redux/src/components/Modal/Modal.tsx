@@ -15,8 +15,7 @@ export const Modal = (props: IModal): JSX.Element => {
         <div className={active ? 'card-modal' : 'card-modal__display-none'}>
           <img className="cross" src={cross} onClick={setActive}></img>
           {error && <h1>{error}</h1>}
-          {/* {isLoading && <h1>Loading ...</h1>} */}
-            <div onClick={(e) => e.stopPropagation()}>
+            <div >
               <div>
                 <b>Name:</b> {card.name}
               </div>
