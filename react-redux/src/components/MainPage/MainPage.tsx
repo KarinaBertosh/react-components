@@ -36,6 +36,7 @@ export const MainPage = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(fetchCards());
+    dispatch(fetchCurrentCards(searchText));
   }, []);
 
   useEffect(() => {
