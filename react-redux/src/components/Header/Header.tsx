@@ -34,18 +34,18 @@ export const Header = (): JSX.Element => {
   return (
     <>
       <div className="header">
-        <div>
-          <button className="button" style={{ opacity: isMainPage() ? 0.5 : 1 }} onClick={() => navigate(defaultPage)}>
+        <div className='navigate'> 
+          <div className="button" style={{ opacity: isMainPage() ? 0.5 : 1 }} onClick={() => navigate(defaultPage)}>
             Main page
-          </button>
-          <button className="button" style={{ opacity: isFormPage() ? 0.5 : 1 }} onClick={() => navigate(formPage)}>
+          </div>
+          <div className="button" style={{ opacity: isFormPage() ? 0.5 : 1 }} onClick={() => navigate(formPage)}>
             Form page
-          </button>
-          <button className="button" style={{ opacity: isAboutPage() ? 0.5 : 1 }} onClick={() => navigate(aboutPage)}>
+          </div>
+          <div className="button" style={{ opacity: isAboutPage() ? 0.5 : 1 }} onClick={() => navigate(aboutPage)}>
             About Us
-          </button>
+          </div>
         </div>
-        <div>Current page: {header}</div>
+        <div className="button">Current page: {header}</div>
       </div>
     </>
   );

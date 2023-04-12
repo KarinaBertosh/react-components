@@ -6,10 +6,6 @@ import './style.scss';
 export const Cards = (props: ICardsProps): JSX.Element => {
   const { cards, sendId } = props;
 
-  // const getID = (id: number) => {
-  //   ClickHandler(id);
-  // };
-
   const clickHandler = (id: number) => {
     sendId(id);
   };

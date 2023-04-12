@@ -48,7 +48,7 @@ export const MainPage = (): JSX.Element => {
   };
 
   return (
-    <>
+    <div className='background'>
       <Header />
       <div className="search">
         <input
@@ -73,6 +73,6 @@ export const MainPage = (): JSX.Element => {
       ) : (
         <h1>{error}</h1>
       )}
-    </>
+    </div>
   );
 };

@@ -2,4 +2,8 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.navigate {
+  display: flex;
+}
