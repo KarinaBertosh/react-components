@@ -13,7 +13,7 @@ import './style.scss';
 
 export const MainPage = (): JSX.Element => {
   const { searchText } = useAppSelector((state) => state.userReducer);
-  const { cards, card, isLoading, error, isLoadingCard, errorInCard } =
+  const { cards, card, isLoading, error, errorInCard } =
     useAppSelector((state) => state.userReducer);
   const { updateSearchText } = cardSlice.actions;
   const dispatch = useAppDispatch();
@@ -29,6 +29,7 @@ export const MainPage = (): JSX.Element => {
 
   const setActive = () => {
     setId(0);
+    console.log(id);
     setModal(!modal);
   };
 
