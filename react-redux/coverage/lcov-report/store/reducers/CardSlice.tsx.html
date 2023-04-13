@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.43% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/23</span>
+                <span class='fraction'>22/23</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/11</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.43% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/23</span>
+                <span class='fraction'>22/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -190,48 +190,48 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,49 +277,49 @@ export const cardSlice = createSlice({
     }
   },
   extraReducers: {
-    [fetchCards.fulfilled.type]: <span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;ICard[]&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoading = false;</span>
-<span class="cstat-no" title="statement not covered" >      state.error = '';</span>
-<span class="cstat-no" title="statement not covered" >      state.cards = action.payload;</span>
+    [fetchCards.fulfilled.type]: (state, action: PayloadAction&lt;ICard[]&gt;) =&gt; {
+      state.isLoading = false;
+      state.error = '';
+      state.cards = action.payload;
     },
     [fetchCards.pending.type]: (state) =&gt; {
       state.isLoading = true;
     },
-    [fetchCards.rejected.type]: <span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;string&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoading = true;</span>
-<span class="cstat-no" title="statement not covered" >      state.error = action.payload;</span>
+    [fetchCards.rejected.type]: (state, action: PayloadAction&lt;string&gt;) =&gt; {
+      state.isLoading = true;
+      state.error = action.payload;
     },
 &nbsp;
-    [fetchCurrentCards.fulfilled.type]: <span class="fstat-no" title="function not covered" >(</span>
+    [fetchCurrentCards.fulfilled.type]: (
       state,
       action: PayloadAction&lt;ICard[]&gt;
     ) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoading = false;</span>
-<span class="cstat-no" title="statement not covered" >      state.error = '';</span>
-<span class="cstat-no" title="statement not covered" >      state.cards = action.payload;</span>
+      state.isLoading = false;
+      state.error = '';
+      state.cards = action.payload;
     },
     [fetchCurrentCards.pending.type]: (state) =&gt; {
       state.isLoading = true;
     },
-    [fetchCurrentCards.rejected.type]: <span class="fstat-no" title="function not covered" >(</span>
+    [fetchCurrentCards.rejected.type]: (
       state,
       action: PayloadAction&lt;string&gt;
     ) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoading = true;</span>
-<span class="cstat-no" title="statement not covered" >      state.error = action.payload;</span>
+      state.isLoading = true;
+      state.error = action.payload;
     },
 &nbsp;
-    [fetchOneCard.fulfilled.type]: <span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;ICard[]&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoadingCard = false;</span>
-<span class="cstat-no" title="statement not covered" >      state.errorInCard = '';</span>
-<span class="cstat-no" title="statement not covered" >      state.card = action.payload;</span>
+    [fetchOneCard.fulfilled.type]: (state, action: PayloadAction&lt;ICard[]&gt;) =&gt; {
+      state.isLoadingCard = false;
+      state.errorInCard = '';
+      state.card = action.payload;
     },
     [fetchOneCard.pending.type]: <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
 <span class="cstat-no" title="statement not covered" >      state.isLoadingCard = true;</span>
     },
-    [fetchOneCard.rejected.type]: <span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;string&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >      state.isLoadingCard = true;</span>
-<span class="cstat-no" title="statement not covered" >      state.errorInCard = action.payload;</span>
+    [fetchOneCard.rejected.type]: (state, action: PayloadAction&lt;string&gt;) =&gt; {
+      state.isLoadingCard = true;
+      state.errorInCard = action.payload;
     },
   },
 });
@@ -334,7 +334,7 @@ export default cardSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-13T09:14:00.085Z
+                at 2023-04-13T14:51:56.276Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
