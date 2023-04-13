@@ -9,7 +9,7 @@
     "build": "webpack --config ./webpack.config.js --env mode=prod slash=./",
     "dev": "webpack --config ./webpack.config.js --env mode=dev slash=./",
     "lint": "eslint . --ext .tsx",
-    "test": "jest --coverage",
+    "test": "jest --coverage --silent",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

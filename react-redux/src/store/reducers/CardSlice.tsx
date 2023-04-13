@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ICard, ICardForm } from '../../components/types';
 import { fetchCards, fetchCurrentCards, fetchOneCard } from './ActionCreators';
 
-interface UserState {
+export interface UserState {
   cards: ICard[];
   card: ICard[];
   isLoading: boolean;
@@ -13,7 +13,7 @@ interface UserState {
   cardsInForm: ICardForm[];
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   cards: [],
   card: [],
   isLoading: false,
@@ -82,5 +82,7 @@ export const cardSlice = createSlice({
     },
   },
 });
+
+export const { updateSearchText, getCardsInForm } = cardSlice.actions;
 
 export default cardSlice.reducer;

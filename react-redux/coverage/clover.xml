@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681370658256" clover="3.2.0">
-  <project timestamp="1681370658257" name="All files">
-    <metrics statements="132" coveredstatements="80" conditionals="37" coveredconditionals="22" methods="51" coveredmethods="27" elements="220" coveredelements="129" complexity="0" loc="132" ncloc="132" packages="13" files="14" classes="14"/>
+<coverage generated="1681377240176" clover="3.2.0">
+  <project timestamp="1681377240177" name="All files">
+    <metrics statements="133" coveredstatements="83" conditionals="37" coveredconditionals="22" methods="51" coveredmethods="29" elements="221" coveredelements="134" complexity="0" loc="133" ncloc="133" packages="13" files="14" classes="14"/>
     <package name="components">
       <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="E:\RSS\react-components\react-redux\src\components\App.tsx">
@@ -164,37 +164,37 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="store.tsx" path="E:\RSS\react-components\react-redux\src\store\store.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
       </file>
     </package>
     <package name="store.reducers">
-      <metrics statements="37" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="4"/>
+      <metrics statements="38" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="6"/>
       <file name="ActionCreators.tsx" path="E:\RSS\react-components\react-redux\src\store\reducers\ActionCreators.tsx">
         <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
-        <line num="5" count="5" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="33" count="5" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
       </file>
       <file name="CardSlice.tsx" path="E:\RSS\react-components\react-redux\src\store\reducers\CardSlice.tsx">
-        <metrics statements="22" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="2"/>
-        <line num="16" count="5" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
+        <metrics statements="23" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="4"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
@@ -213,6 +213,7 @@
         <line num="77" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
+        <line num="86" count="7" type="stmt"/>
       </file>
     </package>
   </project>
