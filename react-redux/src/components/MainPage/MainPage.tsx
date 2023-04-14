@@ -54,6 +54,7 @@ export const MainPage = (): JSX.Element => {
       <Header />
       <div className="search">
         <input
+          role="search"
           type="search"
           className="search__input"
           value={searchText}

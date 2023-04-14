@@ -31,12 +31,3 @@ export interface ICardInApi {
   name: string,
   url: string,
 }
-
-export interface IModal {
-  active: boolean;
-  setActive: () => boolean;
-  card: ICard;
-  isLoading: boolean;
-  error: string;
-  
-}

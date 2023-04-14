@@ -1,20 +1,6 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
-
+import { render } from '@testing-library/react';
 import { Cards } from './Cards';
-
-let container = null;
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
 
 const cards = [
   {
@@ -36,9 +22,9 @@ const cards = [
     url: 'string',
   },
 ];
+const sendId = jest.fn();
 
 it('render cards', () => {
-  act(() => {
-    render(<Cards cards={cards} />, container);
-  });
+  render(<Cards cards={cards} sendId={sendId} />);
+
 });

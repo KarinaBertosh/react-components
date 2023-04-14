@@ -1,9 +1,17 @@
 import React from 'react';
-import { IModal } from '../types';
 import cross from '../../assets/cross.png';
+import { ICard } from '../types';
 import './style.scss';
 
-export const Modal = (props: IModal): JSX.Element => {
+interface IModalProps {
+  active: boolean;
+  setActive: () => void;
+  card: ICard;
+  isLoading?: boolean;
+  error: string;  
+}
+
+export const Modal = (props: IModalProps): JSX.Element => {
   const { active, setActive, card, error } = props;
 
   return (
@@ -17,7 +25,7 @@ export const Modal = (props: IModal): JSX.Element => {
           {error && <h1>{error}</h1>}
             <div >
               <div>
-                <b>Name:</b> {card.name}
+                <b role='name'>Name:</b> {card.name}
               </div>
               <div>
                 <b>Created:</b> {card.created}

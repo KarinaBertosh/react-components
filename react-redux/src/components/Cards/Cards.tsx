@@ -15,10 +15,10 @@ export const Cards = (props: ICardsProps): JSX.Element => {
     <div className="cards">
       {cards.map((c: ICardInApi) => {
         return (
-          <div key={c.id} className='cards' onClick={() => clickHandler(c.id)}>
+          <div key={c.id} className='cards' role='card' onClick={() => clickHandler(c.id)}>
             <div className='custom-card'>
               <p>
-                <b>
+                <b role='episode'>
                   Episode
                 </b>
                 "{c.name}"
