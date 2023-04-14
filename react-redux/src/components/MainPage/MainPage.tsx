@@ -13,8 +13,9 @@ import './style.scss';
 
 export const MainPage = (): JSX.Element => {
   const { searchText } = useAppSelector((state) => state.userReducer);
-  const { cards, card, isLoading, error, errorInCard } =
-    useAppSelector((state) => state.userReducer);
+  const { cards, card, isLoading, error, errorInCard } = useAppSelector(
+    (state) => state.userReducer
+  );
   const { updateSearchText } = cardSlice.actions;
   const dispatch = useAppDispatch();
 
@@ -49,7 +50,7 @@ export const MainPage = (): JSX.Element => {
   };
 
   return (
-    <div className='background'>
+    <div className="background">
       <Header />
       <div className="search">
         <input

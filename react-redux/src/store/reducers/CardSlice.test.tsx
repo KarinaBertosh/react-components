@@ -1,5 +1,3 @@
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
 import cardSlice, {
   UserState,
   getCardsInForm,
@@ -26,7 +24,7 @@ const newCardsInForm = [
   },
 ];
 
-const cards = [
+export const cards = [
   {
     air_date: 'string',
     characters: ['1', '2'],
