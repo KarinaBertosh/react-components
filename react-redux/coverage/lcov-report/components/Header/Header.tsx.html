@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.38% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/26</span>
+                <span class='fraction'>20/26</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.86% </span>
+                <span class="strong">73.91% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/23</span>
+                <span class='fraction'>17/23</span>
             </div>
         
             
@@ -121,22 +121,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -144,19 +141,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,7 +173,7 @@ import './style.scss';
 &nbsp;
 export const Header = (): JSX.Element =&gt; {
   const navigate = useNavigate();
-  const [header, setHeader] = useState('');
+  const [header, setHeader] = useState('Main');
   const currentUrl = window.location.hash;
   const isAboutPage = () =&gt; currentUrl === `${net}${aboutPage}`;
   const isMainPage = () =&gt; currentUrl === `${net}${defaultPage}`;
@@ -199,19 +199,19 @@ export const Header = (): JSX.Element =&gt; {
 &nbsp;
   return (
     &lt;&gt;
-      &lt;div className="header" role='header'&gt;
+      &lt;div className="header" data-testid="header"&gt;
         &lt;div className='navigate'&gt; 
-          &lt;div className="button" role='main' style={{ opacity: isMainPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(defaultPage)}</span>&gt;
+          &lt;div className="button" data-testid="main" style={{ opacity: isMainPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={() =&gt; navigate(defaultPage)}&gt;
             Main page
           &lt;/div&gt;
-          &lt;div className="button"  role='form' style={{ opacity: isFormPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(formPage)}</span>&gt;
+          &lt;div className="button" data-testid="form" style={{ opacity: isFormPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={() =&gt; navigate(formPage)}&gt;
             Form page
           &lt;/div&gt;
-          &lt;div className="button" role='about' style={{ opacity: isAboutPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(aboutPage)}</span>&gt;
+          &lt;div className="button" data-testid="about" style={{ opacity: isAboutPage() ? <span class="branch-0 cbranch-no" title="branch not covered" >0.5 </span>: 1 }} onClick={() =&gt; navigate(aboutPage)}&gt;
             About Us
           &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div className="button"  role='current'&gt;Current page: {header}&lt;/div&gt;
+        &lt;div className="button"&gt;Current page: {header}&lt;/div&gt;
       &lt;/div&gt;
     &lt;/&gt;
   );
@@ -223,7 +223,7 @@ export const Header = (): JSX.Element =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-14T14:39:19.251Z
+                at 2023-04-14T15:23:24.372Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

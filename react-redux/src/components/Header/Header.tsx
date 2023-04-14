@@ -6,7 +6,7 @@ import './style.scss';
 
 export const Header = (): JSX.Element => {
   const navigate = useNavigate();
-  const [header, setHeader] = useState('');
+  const [header, setHeader] = useState('Main');
   const currentUrl = window.location.hash;
   const isAboutPage = () => currentUrl === `${net}${aboutPage}`;
   const isMainPage = () => currentUrl === `${net}${defaultPage}`;
@@ -32,19 +32,19 @@ export const Header = (): JSX.Element => {
 
   return (
     <>
-      <div className="header" role='header'>
+      <div className="header" data-testid="header">
         <div className='navigate'> 
-          <div className="button" role='main' style={{ opacity: isMainPage() ? 0.5 : 1 }} onClick={() => navigate(defaultPage)}>
+          <div className="button" data-testid="main" style={{ opacity: isMainPage() ? 0.5 : 1 }} onClick={() => navigate(defaultPage)}>
             Main page
           </div>
-          <div className="button"  role='form' style={{ opacity: isFormPage() ? 0.5 : 1 }} onClick={() => navigate(formPage)}>
+          <div className="button" data-testid="form" style={{ opacity: isFormPage() ? 0.5 : 1 }} onClick={() => navigate(formPage)}>
             Form page
           </div>
-          <div className="button" role='about' style={{ opacity: isAboutPage() ? 0.5 : 1 }} onClick={() => navigate(aboutPage)}>
+          <div className="button" data-testid="about" style={{ opacity: isAboutPage() ? 0.5 : 1 }} onClick={() => navigate(aboutPage)}>
             About Us
           </div>
         </div>
-        <div className="button"  role='current'>Current page: {header}</div>
+        <div className="button">Current page: {header}</div>
       </div>
     </>
   );
