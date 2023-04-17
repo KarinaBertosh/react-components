@@ -10,7 +10,7 @@ import {
   fetchOneCard,
 } from '../../store/reducers/ActionCreators';
 import './style.scss';
-
+//start task
 export const MainPage = (): JSX.Element => {
   const { searchText } = useAppSelector((state) => state.userReducer);
   const { cards, card, isLoading, error, errorInCard } =
