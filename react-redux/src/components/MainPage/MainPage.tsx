@@ -12,45 +12,46 @@ import {
 import './style.scss';
 //start task
 export const MainPage = (): JSX.Element => {
-  const { searchText } = useAppSelector((state) => state.userReducer);
-  const { cards, card, isLoading, error, errorInCard } =
-    useAppSelector((state) => state.userReducer);
-  const { updateSearchText } = cardSlice.actions;
-  const dispatch = useAppDispatch();
+  // const { searchText } = useAppSelector((state) => state.userReducer);
+  // const { cards, card, isLoading, error, errorInCard } =
+  //   useAppSelector((state) => state.userReducer);
+  // const { updateSearchText } = cardSlice.actions;
+  // const dispatch = useAppDispatch();
 
-  const [id, setId] = useState(0);
-  const [modal, setModal] = useState(false);
+  // const [id, setId] = useState(0);
+  // const [modal, setModal] = useState(false);
 
-  const sendId = (idCurrent: number) => {
-    setId(idCurrent);
-    setModal(true);
-    dispatch(fetchOneCard(idCurrent));
-  };
+  // const sendId = (idCurrent: number) => {
+  //   setId(idCurrent);
+  //   setModal(true);
+  //   dispatch(fetchOneCard(idCurrent));
+  // };
 
-  const setActive = () => {
-    setId(0);
-    console.log(id);
-    setModal(!modal);
-  };
+  // const setActive = () => {
+  //   setId(0);
+  //   console.log(id);
+  //   setModal(!modal);
+  // };
 
-  const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateSearchText(e.target.value));
-  };
+  // const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   dispatch(updateSearchText(e.target.value));
+  // };
 
-  useEffect(() => {
-    dispatch(fetchCards());
-    dispatch(fetchCurrentCards(searchText));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchCards());
+  //   dispatch(fetchCurrentCards(searchText));
+  // }, []);
 
-  const handleKeyDown = (e: object) => {
-    if (e.key === 'Enter') {
-      dispatch(fetchCurrentCards(searchText));
-    }
-  };
+  // const handleKeyDown = (e: object) => {
+  //   if (e.key === 'Enter') {
+  //     dispatch(fetchCurrentCards(searchText));
+  //   }
+  // };
 
   return (
     <div className="background">
-      <Header />
+      Main
+      {/* <Header />
       <div className="search">
         <input
           role="search"
@@ -74,7 +75,9 @@ export const MainPage = (): JSX.Element => {
         </>
       ) : (
         <h1>{error}</h1>
-      )}
+      )} */}
     </div>
   );
 };
+
+// module.exports = MainPage;

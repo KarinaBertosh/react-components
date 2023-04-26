@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Form } from './Form';
 import { Provider } from 'react-redux';
-import { setupStore } from '../../store/store';
+import { setupStore } from '../../store/store.tsx';
 
 const store = setupStore();
 

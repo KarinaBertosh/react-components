@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { FormPage } from './FormPage';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { setupStore } from '../../store/store';
+import { setupStore } from '../../store/store.tsx';
 
 const store = setupStore();
 

@@ -3,7 +3,7 @@ import { MainPage } from './MainPage';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { setupStore } from '../../store/store';
+import { setupStore } from '../../store/store.tsx';
 
 const store = setupStore();
 

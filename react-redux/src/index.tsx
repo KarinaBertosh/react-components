@@ -1,22 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { App } from './components/App';
-import { HashRouter } from 'react-router-dom';
-import { setupStore } from './store/store';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+import { App } from "./App.tsx";
+import { HashRouter } from "react-router-dom";
+import "./index.css";
 
-const store = setupStore();
+ReactDOM.hydrate(
+  // <Provider store={store}>
+  <React.StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </React.StrictMode>,
+  // </Provider>,
+    document.getElementById("root")
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </React.StrictMode>
-  </Provider>
-);
+reportWebVitals();
