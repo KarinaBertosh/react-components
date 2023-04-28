@@ -10,8 +10,8 @@ import {
   fetchOneCard,
 } from '../../store/reducers/ActionCreators';
 import './style.scss';
-//start task
-export const MainPage = (): JSX.Element => {
+
+ export const MainPage = (): JSX.Element => {
   // const { searchText } = useAppSelector((state) => state.userReducer);
   // const { cards, card, isLoading, error, errorInCard } =
   //   useAppSelector((state) => state.userReducer);
@@ -50,7 +50,7 @@ export const MainPage = (): JSX.Element => {
 
   return (
     <div className="background">
-      Main
+      Main Page
       {/* <Header />
       <div className="search">
         <input

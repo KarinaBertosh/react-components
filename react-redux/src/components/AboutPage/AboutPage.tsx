@@ -5,7 +5,7 @@ import { Header } from '../Header/Header';
 export const AboutPage = (): JSX.Element =>  {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div>
       The Rick and Morty
       </div>
