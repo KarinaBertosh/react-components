@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './logo.svg'
+import logo from './logo.png'
 import { PageContextProvider } from './usePageContext'
 import type { PageContext } from './types'
 import './PageShell.css'
@@ -15,7 +15,10 @@ function PageShell({ children, pageContext }: { children: React.ReactNode; pageC
           <Sidebar>
             <Logo />
             <Link className="navitem" href="/">
-              Home
+              Search
+            </Link>
+            <Link className="navitem" href="/form">
+              Form
             </Link>
             <Link className="navitem" href="/about">
               About
