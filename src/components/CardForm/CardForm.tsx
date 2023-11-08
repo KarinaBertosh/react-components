@@ -1,5 +1,6 @@
 import React from 'react';
 import { ICardForm } from '../types';
+import Image from 'next/image';
 
 
 export const CardForm = (props: ICardForm): JSX.Element => {
@@ -11,7 +12,7 @@ export const CardForm = (props: ICardForm): JSX.Element => {
       <div className='m-t-5'>Country: {props.country}</div>
       <div className='m-t-5'>Agreement: {props.agreement === true ? 'yes' : 'no'} </div>
       <div className='m-t-5'>Gender: {props.gender}</div>
-      <img className='photo' src={props.photo} alt="photo" />
+      <Image className='photo' src={props.photo} alt="photo"/>
     </div>
   );
 };

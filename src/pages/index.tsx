@@ -37,7 +37,7 @@ export default function Main() {
   useEffect(() => {
     dispatch(fetchCards());
     dispatch(fetchCurrentCards(searchText));
-  }, []);
+  });
 
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
@@ -62,16 +62,16 @@ export default function Main() {
           onKeyDown={handleKeyDown}
         />
       </div>
-      {isLoading && <h1>Loading ...</h1>}
+      {/* {isLoading && <h1>Loading ...</h1>} */}
       {error === '' ? (
         <>
           <Cards cards={cards} sendId={sendId} />
-          <Modal
+          {/* <Modal
             active={modal}
             setActive={setActive}
             card={card}
             error={errorInCard}
-          />
+          /> */}
         </>
       ) : (
         <h1>{error}</h1>

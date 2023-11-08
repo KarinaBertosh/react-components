@@ -12,7 +12,7 @@ export const Cards = (props: ICardsProps): JSX.Element => {
 
   return (
     <div className="cards">
-      {cards.map((c: ICardInApi) => {
+      {/* {cards.map((c: ICardInApi) => {
         return (
           <div key={c.id} className='cards' role='card' onClick={() => clickHandler(c.id)}>
             <div className='custom-card'>
@@ -24,7 +24,8 @@ export const Cards = (props: ICardsProps): JSX.Element => {
               </p>
             </div>
           </div>);
-      })}
+      })} */}
+      cards
     </div>);
 }
 

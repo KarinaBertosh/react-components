@@ -57,7 +57,7 @@ export const Form = (): JSX.Element => {
     mode: "onBlur"
   });
   const handleRegistration = (data: object) => renderNewCard(data);
-  const handleError = (errors: object) => {return errors };
+  const handleError = (errors: object) => { return errors; };
 
   const registerOptions = {
     name: {
@@ -86,18 +86,20 @@ export const Form = (): JSX.Element => {
       <form className="form" onSubmit={handleSubmit(handleRegistration, handleError)}>
         <label role='name'>
           Name:
-          <input type="text" data-testid="name" name="name" {...register('name', registerOptions.name)} />
+          <input type="text" data-testid="name" {...register('name', registerOptions.name)} />
         </label>
         <div className='error'>
-          {errors?.name && errors.name.message}
-        </div>
+          {/* {errors.name.message} */}
+          error
+                  </div>
 
         <label>
           Date of delivery:
-          <input type="date" min="2023-03-28" max="2023-05-31" data-testid="date" name="date" {...register('date', registerOptions.date)} />
+          <input type="date" min="2023-03-28" max="2023-05-31" data-testid="date" {...register('date', registerOptions.date)} />
         </label>
         <div className='error'>
-          {errors?.date && errors.date.message}
+          {/* {errors?.date ?? errors.date.message} */}
+          error
         </div>
 
         <Controller
@@ -106,39 +108,43 @@ export const Form = (): JSX.Element => {
           defaultValue=""
           rules={registerOptions.country}
           render={({ field }) => (
-            <Select options={selectOptions} {...field} label="Text field" />
+            <Select options={selectOptions} {...field} />
           )}
         />
         <div className='error'>
-          {errors?.country && errors.country.message}
+          {/* {errors?.country && errors.country.message} */}
+          error
         </div>
 
         <label className='radio-and-checkbox'>
           I consent to my personal data
-          <input type="checkbox" name="agreement" {...register('agreement', registerOptions.agreement)} />
+          <input type="checkbox" {...register('agreement', registerOptions.agreement)} />
         </label>
         <div className='error'>
-          {errors?.agreement && errors.agreement.message}
+          {/* {errors?.agreement && errors.agreement.message} */}
+          error
         </div>
 
         <label className='radio-and-checkbox'>
-          <input type="radio" name="gender" {...register('gender', registerOptions.gender)}
+          <input type="radio" {...register('gender', registerOptions.gender)}
             value="male" ></input>
           <label htmlFor="male">Male</label>
-          <input type="radio" id="gender" name="gender" {...register('gender', registerOptions.gender)}
+          <input type="radio" id="gender"{...register('gender', registerOptions.gender)}
             value="female"></input>
           <label htmlFor="female">Female</label>
         </label>
         <div className='error'>
-          {errors?.gender && errors.gender.message}
+          {/* {errors?.gender && errors.gender.message} */}
+          error
         </div>
 
         <label>
           Profile picture
-          <input id="file" accept="image/*" type="file" name="photo" {...register('photo', registerOptions.photo)} />
+          <input id="file" accept="image/*" type="file" {...register('photo', registerOptions.photo)} />
         </label>
         <div className='error'>
-          {errors?.photo && errors.photo.message}
+          {/* {errors?.photo && errors.photo.message} */}
+          error
         </div>
 
         <input type="submit" value="Submit" className='button' data-testid="submit" />
