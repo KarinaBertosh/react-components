@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +9,7 @@ export const aboutPage = "/about";
 export const formPage = "/form";
 export const errorPage = "*";
 
-export const Header = (): JSX.Element => {
+export const Header = () => {
   // const navigate = useNavigate();
   const [header, setHeader] = useState('Main');
   // const currentUrl = window.location.hash;
@@ -39,17 +40,17 @@ export const Header = (): JSX.Element => {
       <div className="header" data-testid="header">
         <div className='navigate'>
           <div className="button" data-testid="main" >
-            Main page
+            <Link href="/">Main page</Link>
           </div>
           <div className="button" data-testid="form"  >
-            Form page
+            <Link href="form">Form page</Link>
           </div>
           <div className="button" data-testid="about" >
-          About Us
+            <Link href="about">About Us</Link>
+          </div>
         </div>
-      </div>
-      <div className="button">Current page: {header}</div>
-    </div >
+        <div className="button">Current page: {header}</div>
+      </div >
     </>
   );
-}
+};

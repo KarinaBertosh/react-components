@@ -34,10 +34,10 @@ export default function Main() {
     dispatch(updateSearchText(e.target.value));
   };
 
-  useEffect(() => {
-    dispatch(fetchCards());
-    dispatch(fetchCurrentCards(searchText));
-  });
+  // useEffect(() => {
+  //   dispatch(fetchCards());
+  //   dispatch(fetchCurrentCards(searchText));
+  // });
 
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
