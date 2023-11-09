@@ -1,39 +1,27 @@
 "use client";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { pages, routes } from '../common';
 
-
-export const defaultPage = "/";
-export const aboutPage = "/about";
-export const formPage = "/form";
-export const errorPage = "*";
 
 export const Header = () => {
-  // const navigate = useNavigate();
   const [header, setHeader] = useState('Main');
-  // const currentUrl = window.location.hash;
-  // const isAboutPage = () => currentUrl === `${net}${aboutPage}`;
-  // const isMainPage = () => currentUrl === `${net}${defaultPage}`;
-  // const isFormPage = () => currentUrl === `${net}${formPage}`;
-  const about = 'About';
-  const form = 'Form';
-  const main = 'Main';
-  const net = '#';
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   switch (currentUrl) {
-  //     case `${net}${aboutPage}`:
-  //       setHeader(about);
-  //       break;
-  //     case `${net}${formPage}`:
-  //       setHeader(form);
-  //       break;
-  //     case `${net}${defaultPage}`:
-  //       setHeader(main);
-  //       break;
-  //   }
-  // });
+  useEffect(() => {
+    switch (router.pathname) {
+      case `${routes.defaultPage}${routes.aboutPage}`:
+        setHeader(pages.about);
+        break;
+      case `${routes.defaultPage}${routes.formPage}`:
+        setHeader(pages.form);
+        break;
+      case `${routes.defaultPage}`:
+        setHeader(pages.main);
+        break;
+    }
+  }, [router.pathname]);
 
   return (
     <>
