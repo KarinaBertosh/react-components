@@ -19,7 +19,7 @@ export const Form = (): JSX.Element => {
       country: data.country.value,
       agreement: data.agreement,
       gender: data.gender,
-      photo: URL.createObjectURL(data.photo[0]),
+      photo: data.photo,
     };
     dispatch(getCardsInForm([...cardsInForm, newCard]));
     reset({
@@ -89,17 +89,15 @@ export const Form = (): JSX.Element => {
           <input type="text" data-testid="name" {...register('name', registerOptions.name)} />
         </label>
         <div className='error'>
-          {/* {errors.name.message} */}
-          error
-                  </div>
+          {errors.name?.message?.toString()}
+        </div>
 
         <label>
           Date of delivery:
           <input type="date" min="2023-03-28" max="2023-05-31" data-testid="date" {...register('date', registerOptions.date)} />
         </label>
         <div className='error'>
-          {/* {errors?.date ?? errors.date.message} */}
-          error
+          {errors?.date?.message?.toString()}
         </div>
 
         <Controller
@@ -112,8 +110,7 @@ export const Form = (): JSX.Element => {
           )}
         />
         <div className='error'>
-          {/* {errors?.country && errors.country.message} */}
-          error
+          {errors?.country?.message?.toString()}
         </div>
 
         <label className='radio-and-checkbox'>
@@ -121,8 +118,7 @@ export const Form = (): JSX.Element => {
           <input type="checkbox" {...register('agreement', registerOptions.agreement)} />
         </label>
         <div className='error'>
-          {/* {errors?.agreement && errors.agreement.message} */}
-          error
+          {errors?.agreement?.message?.toString()}
         </div>
 
         <label className='radio-and-checkbox'>
@@ -134,17 +130,7 @@ export const Form = (): JSX.Element => {
           <label htmlFor="female">Female</label>
         </label>
         <div className='error'>
-          {/* {errors?.gender && errors.gender.message} */}
-          error
-        </div>
-
-        <label>
-          Profile picture
-          <input id="file" accept="image/*" type="file" {...register('photo', registerOptions.photo)} />
-        </label>
-        <div className='error'>
-          {/* {errors?.photo && errors.photo.message} */}
-          error
+          {errors?.gender?.message?.toString()}
         </div>
 
         <input type="submit" value="Submit" className='button' data-testid="submit" />
