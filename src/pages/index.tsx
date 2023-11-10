@@ -1,3 +1,4 @@
+
 import { Cards } from "@/components/Cards/Cards";
 import { Header } from "@/components/Header/Header";
 import { Modal } from "@/components/Modal/Modal";
@@ -34,10 +35,11 @@ export default function Main() {
     dispatch(updateSearchText(e.target.value));
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchCards());
-  //   dispatch(fetchCurrentCards(searchText));
-  // });
+  useEffect(() => {
+    dispatch(fetchCards());
+    dispatch(fetchCurrentCards(searchText));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
@@ -51,32 +53,32 @@ export default function Main() {
         <title>SSR</title>
       </Head>
       <div className="background">
-      <Header />
-      <div className="search">
-        <input
-          role="search"
-          type="search"
-          className="search__input"
-          value={searchText}
-          onChange={saveChange}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-      {/* {isLoading && <h1>Loading ...</h1>} */}
-      {error === '' ? (
-        <>
-          <Cards cards={cards} sendId={sendId} />
-          {/* <Modal
+        <Header />
+        <div className="search">
+          <input
+            role="search"
+            type="search"
+            className="search__input"
+            value={searchText}
+            onChange={saveChange}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        {isLoading && <h1>Loading ...</h1>}
+        {error === '' ? (
+          <>
+            <Cards cards={cards} sendId={sendId} />
+            {/* <Modal
             active={modal}
             setActive={setActive}
             card={card}
             error={errorInCard}
           /> */}
-        </>
-      ) : (
-        <h1>{error}</h1>
-      )}
-    </div>
+          </>
+        ) : (
+          <h1>{error}</h1>
+        )}
+      </div>
     </>);
 }
 
