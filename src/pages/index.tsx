@@ -5,6 +5,7 @@ import { Modal } from "@/components/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "@/hook/redux";
 import { fetchCards, fetchCurrentCards, fetchOneCard } from "@/store/reducers/ActionCreators";
 import { cardSlice } from "@/store/reducers/CardSlice";
+import { log } from "console";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
@@ -27,7 +28,6 @@ export default function Main() {
 
   const setActive = () => {
     setId(0);
-    console.log(id);
     setModal(!modal);
   };
 
@@ -68,12 +68,12 @@ export default function Main() {
         {error === '' ? (
           <>
             <Cards cards={cards} sendId={sendId} />
-            {/* <Modal
+            <Modal
             active={modal}
             setActive={setActive}
             card={card}
             error={errorInCard}
-          /> */}
+          />
           </>
         ) : (
           <h1>{error}</h1>

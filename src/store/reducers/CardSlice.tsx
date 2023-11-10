@@ -4,7 +4,7 @@ import { fetchCards, fetchCurrentCards, fetchOneCard } from './ActionCreators';
 
 export interface UserState {
   cards: ICard[];
-  card: ICard[];
+  card: ICard;
   isLoading: boolean;
   isLoadingCard: boolean;
   error: string;
@@ -13,9 +13,19 @@ export interface UserState {
   cardsInForm: ICardForm[];
 }
 
+const cardDefault = {
+  air_date: '',
+  characters: [''],
+  created: '',
+  episode: '',
+  id: 1,
+  name: '',
+  url: '',
+};
+
 export const initialState: UserState = {
-  cards: [],
-  card: [],
+  cards: [cardDefault],
+  card: cardDefault,
   isLoading: false,
   isLoadingCard: false,
   error: '',
@@ -68,7 +78,7 @@ export const cardSlice = createSlice({
       state.error = action.payload;
     },
 
-    [fetchOneCard.fulfilled.type]: (state, action: PayloadAction<ICard[]>) => {
+    [fetchOneCard.fulfilled.type]: (state, action: PayloadAction<ICard>) => {
       state.isLoadingCard = false;
       state.errorInCard = '';
       state.card = action.payload;

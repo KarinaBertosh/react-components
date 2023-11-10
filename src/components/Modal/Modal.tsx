@@ -11,7 +11,7 @@ interface IModalProps {
   error: string;
 }
 
-export const Modal = (props: IModalProps): JSX.Element => {
+export const Modal = (props: IModalProps) => {
   const { active, setActive, card, error } = props;
 
   return (
@@ -21,7 +21,7 @@ export const Modal = (props: IModalProps): JSX.Element => {
         className={active ? 'modal-overlay' : 'card-modal__display-none'}
       >
         <div className={active ? 'card-modal' : 'card-modal__display-none'}>
-          <Image className="cross" src={cross} alt={'cross'} onClick={setActive} />
+          <Image className="cross" src={cross} alt={'cross'} onClick={setActive} width={50}/>
 
           {error && <h1>{error}</h1>}
           <div >
