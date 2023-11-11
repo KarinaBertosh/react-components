@@ -10,14 +10,9 @@ export const fetchPhotos = createAsyncThunk(
   'cards/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const result =
-        unsplash.photos.list({ perPage: 30 }).then((result) => {
-          console.log(result.response?.results);
-
-          return result.response?.results;
-        });
-
-      return result;
+      return unsplash.photos.list({ perPage: 30 }).then((result) => {
+        return result.response?.results;
+      });
     } catch (e) {
       return thunkAPI.rejectWithValue('Failed to load cards');
     }
@@ -28,31 +23,26 @@ export const fetchCurrentPhoto = createAsyncThunk(
   'photo/fetchCurrent',
   async (query: string, thunkAPI) => {
     try {
-      const result =
-        unsplash.search.getPhotos({
-          query: query,
-        }).then((result) => {
-          return result?.response?.results;
-        });
-      return result;
+      return unsplash.search.getPhotos({
+        query: query,
+      }).then((result) => {
+        return result?.response?.results;
+      });
     } catch (e) {
       return thunkAPI.rejectWithValue('Failed to load cards');
     }
   }
 );
 
-// export const fetchOneCard = createAsyncThunk(
-//   'cards/fetchOneCard',
-//   async (id: number, thunkAPI) => {
-//     try {
-//       unsplash.search.getPhotos({
-//         query: query,
-//         perPage: 30
-//       }).then((result) => {
-//         return result?.response?.results;
-//       });
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue('Failed to load card');
-//     }
-//   }
-// );
+export const fetchUpdatePagePhotos = createAsyncThunk(
+  'updatePagePhotos/fetchCurrent',
+  async (page: number, thunkAPI) => {
+    try {
+      return unsplash.photos.list({ page: page, perPage: 30 }).then((result) => {
+        return result.response?.results;
+      });
+    } catch (e) {
+      return thunkAPI.rejectWithValue('Failed to load cards');
+    }
+  }
+);

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ICard, ICardForm } from '../../components/types';
-import { fetchPhotos, fetchCurrentPhoto } from './ActionCreators';
+import { fetchPhotos, fetchCurrentPhoto, fetchUpdatePagePhotos } from './ActionCreators';
 import { IPhoto, photoDefault } from '@/types/common';
 import { photos } from 'unsplash-js/dist/internals';
 
@@ -18,9 +18,6 @@ export const photoSlice = createSlice({
     updateSearchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
-    // getCardsInForm(state, action: PayloadAction<ICardForm[]>) {
-    //   state.cardsInForm = action.payload;
-    // }
   },
   extraReducers: {
     [fetchPhotos.fulfilled.type]: (state, action: PayloadAction<any>) => {
@@ -32,6 +29,19 @@ export const photoSlice = createSlice({
       state.isLoading = true;
     },
     [fetchPhotos.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isLoading = true;
+      state.error = action.payload;
+    },
+
+    [fetchUpdatePagePhotos.fulfilled.type]: (state, action: PayloadAction<any>) => {
+      state.isLoading = false;
+      state.error = '';
+      state.photos = action.payload;
+    },
+    [fetchUpdatePagePhotos.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchUpdatePagePhotos.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = action.payload;
     },
@@ -54,19 +64,6 @@ export const photoSlice = createSlice({
       state.isLoading = true;
       state.error = action.payload;
     },
-
-    // [fetchOneCard.fulfilled.type]: (state, action: PayloadAction<ICard>) => {
-    //   state.isLoadingCard = false;
-    //   state.errorInCard = '';
-    //   state.card = action.payload;
-    // },
-    // [fetchOneCard.pending.type]: (state) => {
-    //   state.isLoadingCard = true;
-    // },
-    // [fetchOneCard.rejected.type]: (state, action: PayloadAction<string>) => {
-    //   state.isLoadingCard = true;
-    //   state.errorInCard = action.payload;
-    // },
   },
 });
 

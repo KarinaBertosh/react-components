@@ -7,6 +7,9 @@ import { fetchCurrentPhoto, fetchPhotos } from "@/store/reducers/ActionCreators"
 import { photoSlice } from "@/store/reducers/PhotoSlice";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Pagination from "@/components/Pagination/Pagination";
+
 
 
 export default function Main() {
@@ -23,7 +26,7 @@ export default function Main() {
   };
 
   console.log(id);
-  
+
 
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchText(e.target.value));
@@ -46,18 +49,9 @@ export default function Main() {
         <title>SSR</title>
       </Head>
       <div className="background">
-        <Header />
-        <div className="search">
-          <input
-            role="search"
-            type="search"
-            className="search__input"
-            value={searchText}
-            onChange={saveChange}
-            onKeyDown={handleKeyDown}
-          />
-        </div>
+        <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} disabled={false} />
         <Photos photos={photos} sendId={sendId} />
+        <Pagination/>
       </div>
     </>);
 }
