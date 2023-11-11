@@ -6,7 +6,7 @@ export default function AboutPage() {
     <>
       <Header />
       <div>
-        The Rick and Morty
+        Photos
       </div>
     </>
   );

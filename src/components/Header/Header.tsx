@@ -28,10 +28,10 @@ export const Header = () => {
       <div className="header" data-testid="header">
         <div className='navigate'>
           <div className="button" data-testid="main" >
-            <Link href="/">Main page</Link>
+            <Link href="/">Photos</Link>
           </div>
           <div className="button" data-testid="form"  >
-            <Link href="form">Form page</Link>
+            <Link href="form">Form</Link>
           </div>
           <div className="button" data-testid="about" >
             <Link href="about">About Us</Link>

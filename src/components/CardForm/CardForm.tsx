@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const CardForm = (props: ICardForm): JSX.Element => {
   return (
-    <div className='custom-card'>
+    <div className='custom-photo'>
       <h3>Order</h3>
       <div className='m-t-5'>Name: {props.name}</div>
       <div className='m-t-5 price'>Date: {props.date}</div>

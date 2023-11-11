@@ -5,7 +5,7 @@ export const routes = {
 };
 
 export const pages = {
-    main: "Main",
+    main: "Photos",
     about: "About",
     form: "Form",
 };

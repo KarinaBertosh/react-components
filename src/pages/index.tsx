@@ -1,49 +1,42 @@
 
-import { Cards } from "@/components/Cards/Cards";
+import { Photos } from "@/components/Photos/Photos";
 import { Header } from "@/components/Header/Header";
 import { Modal } from "@/components/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "@/hook/redux";
-import { fetchCards, fetchCurrentCards, fetchOneCard } from "@/store/reducers/ActionCreators";
-import { cardSlice } from "@/store/reducers/CardSlice";
-import { log } from "console";
+import { fetchCurrentPhoto, fetchPhotos } from "@/store/reducers/ActionCreators";
+import { photoSlice } from "@/store/reducers/PhotoSlice";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
 
 export default function Main() {
-  const { searchText } = useAppSelector((state: any) => state.userReducer);
-  const { cards, card, isLoading, error, errorInCard } =
-    useAppSelector((state) => state.userReducer);
-  const { updateSearchText } = cardSlice.actions;
+  const { searchText } = useAppSelector((state: any) => state.photoReducer);
+  const { photos, isLoading } =
+    useAppSelector((state) => state.photoReducer);
+  const { updateSearchText } = photoSlice.actions;
   const dispatch = useAppDispatch();
 
-  const [id, setId] = useState(0);
-  const [modal, setModal] = useState(false);
+  const [id, setId] = useState<string>('');
 
-  const sendId = (idCurrent: number) => {
+  const sendId = (idCurrent: string) => {
     setId(idCurrent);
-    setModal(true);
-    dispatch(fetchOneCard(idCurrent));
   };
 
-  const setActive = () => {
-    setId(0);
-    setModal(!modal);
-  };
+  console.log(id);
+  
 
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchText(e.target.value));
   };
 
   useEffect(() => {
-    dispatch(fetchCards());
-    dispatch(fetchCurrentCards(searchText));
+    dispatch(fetchPhotos());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
-      dispatch(fetchCurrentCards(searchText));
+      dispatch(fetchCurrentPhoto(searchText));
     }
   };
 
@@ -64,20 +57,7 @@ export default function Main() {
             onKeyDown={handleKeyDown}
           />
         </div>
-        {isLoading && <h1>Loading ...</h1>}
-        {error === '' ? (
-          <>
-            <Cards cards={cards} sendId={sendId} />
-            <Modal
-            active={modal}
-            setActive={setActive}
-            card={card}
-            error={errorInCard}
-          />
-          </>
-        ) : (
-          <h1>{error}</h1>
-        )}
+        <Photos photos={photos} sendId={sendId} />
       </div>
     </>);
 }

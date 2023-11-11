@@ -1,3 +1,5 @@
+import { IPhoto } from "@/types/common";
+
 export interface ICard {
   air_date: string,
   characters: Array<string>,
@@ -17,17 +19,17 @@ export interface ICardForm {
   photo: string,
 }
 
-export interface ICardsProps {
-  cards: ICardInApi[],
-  sendId: (id: number) => void,
+export interface IPhotosProps {
+  photos: IPhoto[],
+  sendId: (id: string) => void,
 }
 
-export interface ICardInApi {
-  air_date: string,
-  characters: Array<string>,
-  created: string,
-  episode: string,
-  id: number,
-  name: string,
-  url: string,
-}
+// export interface ICardInApi {
+//   air_date: string,
+//   characters: Array<string>,
+//   created: string,
+//   episode: string,
+//   id: number,
+//   name: string,
+//   url: string,
+// }

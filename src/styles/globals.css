@@ -27,14 +27,14 @@ body {
   background-size: 100%;
 }
 
-.cards {
+.photos {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: center;
 }
 
-.custom-card {
+.custom-photo {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -56,14 +56,14 @@ body {
   font-weight: 700;
 }
 
-.cards {
+.photos {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   justify-content: center;
 }
 
-.custom-card {
+.custom-photo {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -74,6 +74,28 @@ body {
   box-shadow: 5px 5px 10px 0px #037a03;
   ;
   padding: 10px
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  margin: 0 10px 10px 0;
+}
+
+.plus {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.plus:hover {
+  background-color: rgb(206, 222, 252);
 }
 
 /* h3 {
@@ -141,19 +163,21 @@ body {
 }
 
 .button {
-  color: #037a03;
+  color: #0f47c9;
   font-weight: 800;
   height: 40px;
   cursor: pointer;
 }
 
 a {
+  font-size: 20px;
   text-decoration: none;
-  color: #037a03;
+  color: #0f47c9;
 }
 
 a:hover {
-  color: #8ae78a;
+  font-size: 22px;
+  color: #99b4ee;
 }
 
 .m-t-5 {

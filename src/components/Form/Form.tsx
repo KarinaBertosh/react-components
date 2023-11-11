@@ -4,12 +4,12 @@ import { ICardForm } from '../types';
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { useAppDispatch, useAppSelector } from '../../hook/redux';
-import { cardSlice } from '../../store/reducers/CardSlice';
+// import { cardSlice } from '../../store/reducers/PhotoSlice';
 
 
 export const Form = (): JSX.Element => {
-  const { cardsInForm } = useAppSelector((state) => state.userReducer);
-  const { getCardsInForm } = cardSlice.actions;
+  // const { cardsInForm } = useAppSelector((state) => state.userReducer);
+  // const { getCardsInForm } = cardSlice.actions;
   const dispatch = useAppDispatch();
 
   const renderNewCard = (data: any) => {
@@ -21,7 +21,7 @@ export const Form = (): JSX.Element => {
       gender: data.gender,
       photo: data.photo,
     };
-    dispatch(getCardsInForm([...cardsInForm, newCard]));
+    // dispatch(getCardsInForm([...cardsInForm, newCard]));
     reset({
       name: '',
       date: '',
@@ -38,7 +38,7 @@ export const Form = (): JSX.Element => {
   const getCards = () => {
     return (
       <div className='cards'>
-        {cardsInForm.map((c: ICardForm, i) =>
+        {/* {cardsInForm.map((c: ICardForm, i) =>
           <CardForm
             key={c.name + i}
             name={c.name}
@@ -48,7 +48,7 @@ export const Form = (): JSX.Element => {
             gender={c.gender}
             photo={c.photo}
           />
-        )}
+        )} */}
       </div>
     );
   };
