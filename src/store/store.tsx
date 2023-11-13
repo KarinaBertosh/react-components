@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import photoReducer from './reducers/PhotoSlice';
+import userReducer from './reducers/UserAuth';
 
 const rootReducer = combineReducers({
   photoReducer,
+  userReducer,
 });
 
 export const setupStore = () => {

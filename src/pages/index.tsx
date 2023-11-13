@@ -25,9 +25,6 @@ export default function Main() {
     setId(idCurrent);
   };
 
-  console.log(id);
-
-
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchText(e.target.value));
   };
@@ -49,7 +46,7 @@ export default function Main() {
         <title>SSR</title>
       </Head>
       <div className="background">
-        <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} disabled={false} />
+        <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} inputDisabled={false} />
         <Photos photos={photos} sendId={sendId} />
         <Pagination/>
       </div>

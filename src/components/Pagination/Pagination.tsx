@@ -41,10 +41,6 @@ export default function Pagination() {
     }
   };
 
-  console.log(currentPage);
-  
-
-
   return (
     <div className="pagination">
       <nav aria-label="Exam">

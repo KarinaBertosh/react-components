@@ -5,18 +5,28 @@ import React, { useEffect, useState } from 'react';
 import { pages, routes } from '../common';
 import Image from 'next/image';
 import photo from '../../assets/photo.png';
+import { IUser, getAllUsers } from '@/types/user';
+import { useAppDispatch, useAppSelector } from '@/hook/redux';
+import { removeUser } from '@/store/reducers/UserAuth';
+
 
 interface IHeader {
   searchText?: string,
   saveChange?: (e: any) => void,
   handleKeyDown?: (e: any) => void,
-  disabled: boolean;
+  inputDisabled: boolean;
 }
 
 export const Header = (props: IHeader) => {
-  const { searchText, saveChange, handleKeyDown, disabled } = props;
+  const { searchText, saveChange, handleKeyDown, inputDisabled } = props;
   const [header, setHeader] = useState('Main');
   const router = useRouter();
+  const { email: currentEmail } = useAppSelector((state: any) => state.userReducer);
+  const dispatch = useAppDispatch();
+
+  const exit = (e: any) => {
+    dispatch(removeUser());
+  }
 
   useEffect(() => {
     switch (router.pathname) {
@@ -43,7 +53,7 @@ export const Header = (props: IHeader) => {
         </div>
         <div className="search">
           <input
-            disabled={disabled}
+            disabled={inputDisabled}
             placeholder='Search photo..'
             role="search"
             type="search"
@@ -53,8 +63,9 @@ export const Header = (props: IHeader) => {
             onKeyDown={handleKeyDown}
           />
         </div>
-        <div className="button sign-in"> <Link href="form">Sign in</Link></div>
+        {currentEmail ? <div className="button sign-in"> <a onClick={(e) => exit(e)}>Exit</a></div> : <div className="button sign-in"> <Link href="auth">Sign in</Link></div>}
       </div >
     </>
   );
 };
+
