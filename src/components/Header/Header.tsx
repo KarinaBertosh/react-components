@@ -63,7 +63,7 @@ export const Header = (props: IHeader) => {
             onKeyDown={handleKeyDown}
           />
         </div>
-        {currentEmail ? <div className="button sign-in"> <a onClick={(e) => exit(e)}>Exit</a></div> : <div className="button sign-in"> <Link href="auth">Sign in</Link></div>}
+        {currentEmail ? <div className="button sign-in"> <a onClick={(e) => exit(e)}>Exit</a></div> : <div className="button sign-in"> <Link href="auth">Log in</Link></div>}
       </div >
     </>
   );
