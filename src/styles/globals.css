@@ -23,18 +23,6 @@ body {
   height: 35px;
 }
 
-.photo {
-  height: 200px;
-  background-size: 100%;
-}
-
-.photos {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  justify-content: center;
-}
-
 .price {
   font-weight: 700;
 }
@@ -60,8 +48,8 @@ body {
 }
 
 .photo {
-  width: 150px;
-  height: 150px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
   margin: 0 10px 10px 0;
 }
@@ -215,6 +203,11 @@ a:hover {
     margin: 3px;
     width: 100px;
   }
+
+  .photo {
+    width: 130px;
+    height: 130px;
+  }
 }
 
 @media screen and (min-width: 510px) and (max-width: 820px) {
@@ -241,5 +234,10 @@ a:hover {
 
   .search__input {
     width: 200px;
+  }
+
+  .photo {
+    width: 200px;
+    height: 200px;
   }
 }
