@@ -1,5 +1,3 @@
-import axios from 'axios';
-import { ICard } from '../../components/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { createApi } from "unsplash-js";
 

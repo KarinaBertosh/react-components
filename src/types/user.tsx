@@ -1,5 +1,5 @@
 import { db } from "@/firebase";
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 
 export interface IUser {
     userId: string;
@@ -14,7 +14,6 @@ export async function writeUserData(user: IUser) {
     } = user;
 
     try {
-        const userRef = doc(db, 'users', userId);
         await setDoc(doc(db, 'users', userId), {
             userId,
             email: email ?? '',

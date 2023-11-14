@@ -1,8 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICard, ICardForm } from '../../components/types';
 import { fetchPhotos, fetchCurrentPhoto, fetchUpdatePagePhotos } from './ActionCreators';
-import { IPhoto, photoDefault } from '@/types/common';
-import { photos } from 'unsplash-js/dist/internals';
 
 export const initialState = {
   photos: [],

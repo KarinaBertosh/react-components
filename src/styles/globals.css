@@ -11,40 +11,18 @@ body {
   height: 100%;
 }
 
-.search {
-  display: flex;
-  justify-content: center;
-}
-
-.search__input {
+.search-input {
   width: 400px;
   border: 2px solid #0f47c9;
   border-radius: 10px;
   height: 35px;
 }
 
-.price {
-  font-weight: 700;
-}
-
 .photos {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 50px;
   justify-content: center;
-}
-
-.custom-photo {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  font-size: 14px;
-  border: 1px solid #60e960;
-  ;
-  margin: 5px;
-  box-shadow: 5px 5px 10px 0px #037a03;
-  ;
-  padding: 10px
 }
 
 .photo {
@@ -54,43 +32,24 @@ body {
   margin: 0 10px 10px 0;
 }
 
-.plus {
+.heart {
   position: absolute;
   top: 5px;
   right: 15px;
   width: 30px;
   height: 30px;
-  background-color: white;
-  border-radius: 50%;
   cursor: pointer;
 }
 
-.plus:hover {
-  background-color: rgb(206, 222, 252);
-}
-
-.price {
-  font-weight: 700;
-}
-
-.error-page {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.radio-and-checkbox {
-  justify-content: flex-start;
-}
-
-.error {
-  color: red;
+.heart:hover {
+  width: 35px;
+  height: 35px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
 }
 
 .navigate {
@@ -99,24 +58,11 @@ body {
   width: 250px;
 }
 
-#root {
-  height: 100%;
-  padding: 20px;
-}
-
-.App {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .button {
   display: flex;
   align-items: center;
-  color: #0f47c9;
   font-size: 22px;
   font-weight: 900;
-  height: 40px;
   cursor: pointer;
 }
 
@@ -158,7 +104,7 @@ a:hover {
   color: red;
 }
 
-.changeForm {
+.switchForm {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -166,14 +112,14 @@ a:hover {
   cursor: pointer;
 }
 
-.changeForm:hover {
+.switchForm:hover {
   color: rgb(128, 13, 13);
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  margin-top: 20px;
 }
 
 
@@ -199,7 +145,7 @@ a:hover {
     border: 2px solid #0f47c9;
   }
 
-  .search__input {
+  .search-input {
     margin: 3px;
     width: 100px;
   }
@@ -232,7 +178,7 @@ a:hover {
     border: 2px solid #0f47c9;
   }
 
-  .search__input {
+  .search-input {
     width: 200px;
   }
 

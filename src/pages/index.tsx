@@ -1,29 +1,25 @@
 
 import { Photos } from "@/components/Photos/Photos";
 import { Header } from "@/components/Header/Header";
-import { Modal } from "@/components/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "@/hook/redux";
 import { fetchCurrentPhoto, fetchPhotos } from "@/store/reducers/ActionCreators";
 import { photoSlice } from "@/store/reducers/PhotoSlice";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from "@/components/Pagination/Pagination";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Main() {
+  const [id, setId] = useState<string>('');
   const { searchText } = useAppSelector((state: any) => state.photoReducer);
-  const { photos, isLoading } =
-    useAppSelector((state) => state.photoReducer);
+  const { photos } = useAppSelector((state) => state.photoReducer);
   const { updateSearchText } = photoSlice.actions;
   const dispatch = useAppDispatch();
 
-  const [id, setId] = useState<string>('');
-
-  const sendId = (idCurrent: string) => {
-    setId(idCurrent);
-  };
+  // const sendId = (idCurrent: string) => {
+  //   setId(idCurrent);
+  // };
 
   const saveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateSearchText(e.target.value));
@@ -43,13 +39,11 @@ export default function Main() {
   return (
     <>
       <Head>
-        <title>SSR</title>
+        <title>Stock Photos</title>
       </Head>
-      <div className="background">
-        <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} inputDisabled={false} />
-        <Photos photos={photos} sendId={sendId} />
-        <Pagination/>
-      </div>
+      <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} inputDisabled={false} />
+      <Photos photos={photos} />
+      <Pagination />
     </>);
 }
 

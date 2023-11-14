@@ -1,26 +1,3 @@
-export const photoDefault = {
-    alt_description: "a small antelope standing in the middle of a desert",
-    blur_hash: "LRFFBDIUE2oz0LtRt7f5IpWqjsWB",
-    breadcrumbs: [],
-    color: "#404040",
-    created_at: "2023-04-28T13:09:44Z",
-    current_user_collections: [],
-    description: "Sand Gazelle, Nature Reserve – NEOM, Saudi Arabia | The NEOM Nature Reserve region is being designed to deliver protection and restoration of biodiversity across 95% of NEOM.",
-    height: 5760,
-    id: "qqwX49ov8UY",
-    liked_by_user: false,
-    likes: 159,
-    links: { self: 'https://api.unsplash.com/photos/a-small-antelope-standing-in-the-middle-of-a-desert-qqwX49ov8UY', html: 'https://unsplash.com/photos/a-small-antelope-standing-in-the-middle-of-a-desert-qqwX49ov8UY', download: 'https://unsplash.com/photos/qqwX49ov8UY/download?i…w1MTkzNjB8MXwxfGFsbHwxfHx8fHx8Mnx8MTY5OTY5MDg0NHw', download_location: 'https://api.unsplash.com/photos/qqwX49ov8UY/downlo…w1MTkzNjB8MXwxfGFsbHwxfHx8fHx8Mnx8MTY5OTY5MDg0NHw' },
-    promoted_at: null,
-    slug: "a-small-antelope-standing-in-the-middle-of-a-desert-qqwX49ov8UY",
-    sponsorship: { impression_urls: Array(2), tagline: 'Made to Change', tagline_url: 'https://www.neom.com/en-us?utm_source=unsplash&utm_medium=referral' },
-    topic_submissions: {},
-    updated_at: "2023-11-11T06:41:06Z",
-    urls: { raw: 'https://images.unsplash.com/photo-1682687220777-2c…GFsbHwxfHx8fHx8Mnx8MTY5OTY5MDg0NHw&ixlib=rb-4.0.3', full: 'https://images.unsplash.com/photo-1682687220777-2c…wxfHx8fHx8Mnx8MTY5OTY5MDg0NHw&ixlib=rb-4.0.3&q=85', regular: 'https://images.unsplash.com/photo-1682687220777-2c…Hx8Mnx8MTY5OTY5MDg0NHw&ixlib=rb-4.0.3&q=80&w=1080', small: 'https://images.unsplash.com/photo-1682687220777-2c…fHx8Mnx8MTY5OTY5MDg0NHw&ixlib=rb-4.0.3&q=80&w=400', thumb: 'https://images.unsplash.com/photo-1682687220777-2c…fHx8Mnx8MTY5OTY5MDg0NHw&ixlib=rb-4.0.3&q=80&w=200' },
-    user: { id: 'mYizSrdJkkU', updated_at: '2023-11-11T07:35:09Z', username: 'neom', name: 'NEOM', first_name: 'NEOM' },
-    width: 8640
-};
-
 export interface IPhoto {
     alt_description: string,
     blur_hash: string,
@@ -33,13 +10,28 @@ export interface IPhoto {
     id: string,
     liked_by_user: boolean,
     likes: number,
-    links: { self: string, html: string, download: string, download_location: string },
+    links: { self: string, html: string, download: string, download_location: string; },
     promoted_at: null,
     slug: string,
-    sponsorship: { impression_urls: Array<any>, tagline: string, tagline_url: string },
+    sponsorship: { impression_urls: Array<any>, tagline: string, tagline_url: string; },
     topic_submissions: object,
     updated_at: string,
-    urls: { raw: string, full: string, regular: string, small: string },
-    user: { id: string, updated_at: string, username: string, name: string, first_name: string },
-    width: number
+    urls: { raw: string, full: string, regular: string, small: string; },
+    user: { id: string, updated_at: string, username: string, name: string, first_name: string; },
+    width: number;
+};
+
+export interface IPhotosProps {
+    photos: IPhoto[],
+}
+
+export const routes = {
+    defaultPage: "/",
+    aboutPage: "about",
+    formPage: "form"
+};
+
+export const forms = {
+    reg: 'reg',
+    logIn: 'logIn'
 };
