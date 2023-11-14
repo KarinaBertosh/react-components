@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function FormPage() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  // const [error, setError] = useState<string>('');
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [currentForm, setCurrentForm] = useState<string>(forms.logIn);
   const dispatch = useAppDispatch();

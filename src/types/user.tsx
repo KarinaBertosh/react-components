@@ -1,5 +1,5 @@
 import { db } from "@/firebase";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 
 export interface IUser {
     userId: string;
@@ -21,9 +21,4 @@ export async function writeUserData(user: IUser) {
     } catch (e) {
         console.error('Error adding document: ', e);
     }
-}
-
-export async function getAllUsers() {
-    const querySnapshot = await getDocs(collection(db, 'users'));
-    return querySnapshot.docs.map((document) => document.data());
 }
