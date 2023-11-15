@@ -43,7 +43,6 @@ export default function Main() {
       </Head>
       <Header searchText={searchText} saveChange={saveChange} handleKeyDown={handleKeyDown} inputDisabled={false} />
       <Photos photos={photos} />
-      <Pagination />
     </>);
 }
 
