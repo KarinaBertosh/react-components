@@ -39,13 +39,21 @@ body {
 
 .photo-page__navbar {
   display: flex;
-  width: 150px;
+  width: 350px;
   justify-content: space-between;
 }
 
-.photo-page__navbar img {
-  width: 50px;
-  height: 50px;
+.photo-page__navbar button {
+  color: #0f47c9;
+  background-color: white;
+  border: 2px solid #0f47c9;
+  border-radius: 10px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.photo-page__navbar button:hover {
+  color: #99b4ee;
 }
 
 .photo-page__photo-field {
@@ -278,6 +286,9 @@ a:hover {
     width: 40px;
     height: 40px;
   }
+  .photo-page__navbar {
+    width: 310px;
+  }
 }
 
 @media screen and (min-width: 510px) and (max-width: 820px) {
@@ -324,5 +335,9 @@ a:hover {
   .photo-page__navbar img:hover {
     width: 45px;
     height: 45px;
+  }
+
+  .photo-page__navbar {
+    width: 320px;
   }
 }
