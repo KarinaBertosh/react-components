@@ -1,3 +1,5 @@
+import saveAs from "file-saver";
+
 export interface IPhoto {
     alt_description: string,
     blur_hash: string,
@@ -34,4 +36,19 @@ export const routes = {
 export const forms = {
     reg: 'reg',
     logIn: 'logIn'
+};
+
+
+export const downloadPhoto = (url: string) => {
+    saveAs(url, `${url}.png`);
+};
+
+export const sendPhotoToFavorite = (url: string, email: string) => {
+    const photos = localStorage.getItem(email) || JSON.stringify([]);
+
+    if (photos) {
+        const newData = JSON.parse(photos);
+        newData.push(url);
+        localStorage[email] = JSON.stringify(newData);
+    }
 };

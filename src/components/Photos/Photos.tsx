@@ -1,4 +1,4 @@
-import { IPhoto, IPhotosProps } from '@/types/common';
+import { IPhoto, IPhotosProps, downloadPhoto, sendPhotoToFavorite } from '@/types/common';
 import Image from 'next/image';
 import heart from '../../assets/heart.png';
 import download from '../../assets/download.png';
@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Photo from '../Photo/Photo';
 import Pagination from '../Pagination/Pagination';
 import React from "react";
-import {saveAs} from "file-saver";
+import { saveAs } from "file-saver";
 
 
 export const Photos = (props: IPhotosProps): JSX.Element => {
@@ -17,50 +17,43 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
   const [currentUrl, setCurrentUrl] = useState<string>('');
   const [isHidePagination, setIsHidePagination] = useState<boolean>(false);
 
-  const sendPhotoToFavorite = (url: string) => {
-    const photos = localStorage.getItem(email) || JSON.stringify([]);
+  // const sendPhotoToFavorite = (url: string) => {
+  //   const photos = localStorage.getItem(email) || JSON.stringify([]);
 
-    if (photos) {
-      const newData = JSON.parse(photos);
-      newData.push(url);
-      localStorage[email] = JSON.stringify(newData);
-    }
-  };
+  //   if (photos) {
+  //     const newData = JSON.parse(photos);
+  //     newData.push(url);
+  //     localStorage[email] = JSON.stringify(newData);
+  //   }
+  // };
 
   const openModal = (url: string) => {
     setCurrentUrl(url);
     setIsOpenModal(true);
-    setIsHidePagination(!isHidePagination)
+    setIsHidePagination(!isHidePagination);
   };
   const setOpenModal = () => {
-    setIsOpenModal(!isOpenModal)
-    setIsHidePagination(!isHidePagination)
-  }
-
-  const downloadPhoto = (url: string) => {
-    saveAs(url, "Twitter-logo");
-  }
+    setIsOpenModal(!isOpenModal);
+    setIsHidePagination(!isHidePagination);
+  };
 
   return (
     <div className="m-t-50">
       {isOpenModal
-        ? <Photo url={currentUrl} setOpenModal={() => setOpenModal()}></Photo>
-        :
-        <>
-          <div className="photos">
-            {photos.map((photo: IPhoto) => (
-              <div key={photo.urls.regular} style={{ position: 'relative' }}>
-                <Image className="download" src={download} alt='download' width={60} onClick={() => downloadPhoto(photo.urls.regular)} />
-                <Image className="heart" src={heart} alt='heart' width={50} onClick={() => sendPhotoToFavorite(photo.urls.regular)} />
-                <Image src={photo.urls.regular} alt={photo.urls.regular} className="photo" width={1000} height={1000} priority={true} onClick={() => openModal(photo.urls.regular)} />
+        ? <Photo url={currentUrl} email={email} setOpenModal={() => setOpenModal()}></Photo>
+        : <div className="photos">
+          {photos.map((photo: IPhoto) => (
+            <div key={photo.urls.regular} style={{ position: 'relative' }}>
+              <Image className="download" src={download} alt='download-reverse' width={60} onClick={() => downloadPhoto(photo.urls.regular)} />
+              <Image className="heart" src={heart} alt='heart' width={50} onClick={() => sendPhotoToFavorite(photo.urls.regular, email)} />
+              <Image src={photo.urls.regular} alt={photo.urls.regular} className="photo" width={1000} height={1000} priority={true} onClick={() => openModal(photo.urls.regular)} />
+            </div>
+          ))}
+        </div>
 
-              </div>
-            ))}
-          </div>
-        </>
       }
 
-      <Pagination isHide={!isHidePagination}/>
+      <Pagination isHide={!isHidePagination} />
     </div>);
 };
 

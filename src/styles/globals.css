@@ -33,6 +33,23 @@ body {
 
 .photo-page {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.photo-page__navbar {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+
+.photo-page__navbar img {
+  width: 50px;
+  height: 50px;
+}
+
+.photo-page__photo-field {
+  display: flex;
   align-items: flex-start;
   justify-content: center;
 }
@@ -61,11 +78,21 @@ body {
 }
 
 .download:hover {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
 }
 
-.cross:hover {
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+.icon:hover {
+  width: 55px;
+  height: 55px;
+}
+
+.backArrow:hover {
   width: 40px;
   height: 40px;
 }
@@ -106,6 +133,10 @@ body {
 
 .m-t-50 {
   margin-top: 50px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
 }
 
 .m-r-10 {
