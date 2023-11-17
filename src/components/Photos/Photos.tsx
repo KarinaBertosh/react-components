@@ -1,10 +1,13 @@
 import { IPhoto, IPhotosProps } from '@/types/common';
 import Image from 'next/image';
 import heart from '../../assets/heart.png';
+import download from '../../assets/download.png';
 import { useAppSelector } from '@/hook/redux';
 import { useState } from 'react';
 import Photo from '../Photo/Photo';
 import Pagination from '../Pagination/Pagination';
+import React from "react";
+import {saveAs} from "file-saver";
 
 
 export const Photos = (props: IPhotosProps): JSX.Element => {
@@ -34,6 +37,10 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
     setIsHidePagination(!isHidePagination)
   }
 
+  const downloadPhoto = (url: string) => {
+    saveAs(url, "Twitter-logo");
+  }
+
   return (
     <div className="m-t-50">
       {isOpenModal
@@ -43,6 +50,7 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
           <div className="photos">
             {photos.map((photo: IPhoto) => (
               <div key={photo.urls.regular} style={{ position: 'relative' }}>
+                <Image className="download" src={download} alt='download' width={60} onClick={() => downloadPhoto(photo.urls.regular)} />
                 <Image className="heart" src={heart} alt='heart' width={50} onClick={() => sendPhotoToFavorite(photo.urls.regular)} />
                 <Image src={photo.urls.regular} alt={photo.urls.regular} className="photo" width={1000} height={1000} priority={true} onClick={() => openModal(photo.urls.regular)} />
 
