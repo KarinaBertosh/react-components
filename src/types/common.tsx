@@ -15,7 +15,7 @@ export interface IPhoto {
     links: { self: string, html: string, download: string, download_location: string; },
     promoted_at: null,
     slug: string,
-    sponsorship: { impression_urls: Array<any>, tagline: string, tagline_url: string; },
+    sponsorship: any,
     topic_submissions: object,
     updated_at: string,
     urls: { raw: string, full: string, regular: string, small: string; },

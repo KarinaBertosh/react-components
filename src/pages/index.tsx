@@ -6,11 +6,12 @@ import { fetchCurrentPhoto, fetchPhotos } from "@/store/reducers/ActionCreators"
 import { photoSlice } from "@/store/reducers/PhotoSlice";
 import Head from "next/head";
 import { useEffect } from "react";
+import { RootState } from "@/store/store";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Main() {
-  const { searchText, photos } = useAppSelector((state: any) => state.photoReducer);
+  const { searchText, photos } = useAppSelector((state: RootState) => state.photoReducer);
   const { updateSearchText } = photoSlice.actions;
   const dispatch = useAppDispatch();
 
@@ -23,12 +24,12 @@ export default function Main() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleKeyDown = (e: any) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement> ) => {
     if (searchText === '') return;
     if (e.key === 'Enter') dispatch(fetchCurrentPhoto(searchText));
   };
 
-  const handleClickButton = (e: any) => {
+  const handleClickButton = (e:  React.MouseEvent<HTMLDivElement> ) => {
     if (searchText === '') return;
     dispatch(fetchCurrentPhoto(searchText));
   };

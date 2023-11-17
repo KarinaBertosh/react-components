@@ -3,12 +3,13 @@ import { Header } from '../../components/Header/Header';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import cross from '../../assets/cross.png';
+import { RootState } from '@/store/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function FavsPage() {
   const [photos, setPhotos] = useState<string[]>([]);
-  const { email } = useAppSelector((state: any) => state.userReducer);
+  const { email } = useAppSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
     const photos = localStorage.getItem(email) ;
@@ -31,7 +32,7 @@ export default function FavsPage() {
   return (
     <>
       <Header inputDisabled={true} />
-      <div className="photos">
+      <div className="photos m-t-50">
         {photos.map((url: string) => (
           <div key={url} style={{ position: 'relative' }}>
             <Image className="heart" src={cross} alt='heart' width={50} height={50} onClick={() => remotePhoto(url)} />

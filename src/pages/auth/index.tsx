@@ -16,7 +16,7 @@ export default function FormPage() {
   const [currentForm, setCurrentForm] = useState<string>(forms.logIn);
   const dispatch = useAppDispatch();
 
-  const handling = async (e: any) => {
+  const handling = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (currentForm === forms.reg) {
@@ -61,14 +61,14 @@ export default function FormPage() {
                 <div className="title">{currentForm === forms.reg ? 'Registration' : 'Log in'}</div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                  <input type="email" value={email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e: any) => setEmail(e.target.value)} />
+                  <input type="email" value={email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
                   <div id="emailHelp" className="form-text">Please indicate false email and password</div>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                  <input type="password" value={password} className="form-control" id="exampleInputPassword1" onChange={(e: any) => setPassword(e.target.value)} />
+                  <input type="password" value={password} className="form-control" id="exampleInputPassword1" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={(e: any) => handling(e)} >Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={(e: React.MouseEvent<HTMLButtonElement>) => handling(e)} >Submit</button>
               </form>
               {
                 currentForm === forms.reg

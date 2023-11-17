@@ -5,20 +5,22 @@ import photo from '../../assets/photo.png';
 import search from '../../assets/search.png';
 import { useAppDispatch, useAppSelector } from '@/hook/redux';
 import { removeUser } from '@/store/reducers/UserAuth';
+import { RootState } from '@/store/store';
 
 
 interface IHeader {
   searchText?: string,
   updateValue?: (e: React.ChangeEvent<HTMLInputElement>) => void,
-  handleKeyDown?: (e: any) => void,
-  handleClickButton?: (e: any) => void,
+  handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement> ) => void,
+  handleClickButton?: (e: React.MouseEvent<HTMLDivElement> ) => void,
   inputDisabled: boolean;
 }
+
 
 export const Header = (props: IHeader) => {
   const dispatch = useAppDispatch();
   const { searchText, updateValue, handleKeyDown, inputDisabled, handleClickButton } = props;
-  const { email: currentEmail } = useAppSelector((state: any) => state.userReducer);
+  const { email: currentEmail } = useAppSelector((state: RootState) => state.userReducer);
 
   const exit = () => dispatch(removeUser());
 
@@ -41,7 +43,9 @@ export const Header = (props: IHeader) => {
             onChange={updateValue}
             onKeyDown={handleKeyDown}
           />
-          <Image src={search} alt='search' width={30} height={30} onClick={handleClickButton}></Image>
+          <div onClick={handleClickButton} className="search-btn">
+            <Image src={search} alt='search' width={30} height={30} ></Image>
+          </div>
         </div>
 
         {currentEmail ?

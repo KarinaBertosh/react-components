@@ -6,11 +6,12 @@ import { useAppSelector } from '@/hook/redux';
 import { useState } from 'react';
 import Photo from '../Photo/Photo';
 import Pagination from '../Pagination/Pagination';
+import { RootState } from '@/store/store';
 
 
 export const Photos = (props: IPhotosProps): JSX.Element => {
   const { photos } = props;
-  const { email } = useAppSelector((state: any) => state.userReducer);
+  const { email } = useAppSelector((state: RootState) => state.userReducer);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [currentUrl, setCurrentUrl] = useState<string>('');
   const [isHidePagination, setIsHidePagination] = useState<boolean>(false);
