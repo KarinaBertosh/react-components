@@ -1,5 +1,5 @@
 import { db } from "@/firebase";
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 export interface IUser {
     userId: string;

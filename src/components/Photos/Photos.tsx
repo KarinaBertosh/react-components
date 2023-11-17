@@ -6,7 +6,6 @@ import { useAppSelector } from '@/hook/redux';
 import { useState } from 'react';
 import Photo from '../Photo/Photo';
 import Pagination from '../Pagination/Pagination';
-import React from "react";
 
 
 export const Photos = (props: IPhotosProps): JSX.Element => {
@@ -21,6 +20,7 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
     setIsOpenModal(true);
     setIsHidePagination(!isHidePagination);
   };
+  
   const setOpenModal = () => {
     setIsOpenModal(!isOpenModal);
     setIsHidePagination(!isHidePagination);

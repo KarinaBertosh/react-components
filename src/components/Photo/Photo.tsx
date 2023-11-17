@@ -1,12 +1,20 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import Image from 'next/image';
 import backArrow from '../../assets/backArrow.png';
 import heart from '../../assets/heart.png';
 import download from '../../assets/download.png';
 import { downloadPhoto, sendPhotoToFavorite } from '@/types/common';
+import 'bootstrap/dist/css/bootstrap.css';
 
-export default function Photo(props: { url: string; email: string; setOpenModal: () => void; }) {
+interface IPhotoField {
+  url: string;
+  email: string;
+  setOpenModal: () => void;
+}
+
+
+export default function Photo(props: IPhotoField) {
   const { url, email, setOpenModal } = props;
+  
   return (
     <div className="photo-page">
       <div className="photo-page__navbar">

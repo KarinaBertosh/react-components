@@ -1,6 +1,5 @@
 "use client";
 import Link from 'next/link';
-import React, { useState } from 'react';
 import Image from 'next/image';
 import photo from '../../assets/photo.png';
 import search from '../../assets/search.png';
@@ -10,7 +9,7 @@ import { removeUser } from '@/store/reducers/UserAuth';
 
 interface IHeader {
   searchText?: string,
-  updateValue?: (e: any) => void,
+  updateValue?: (e: React.ChangeEvent<HTMLInputElement>) => void,
   handleKeyDown?: (e: any) => void,
   handleClickButton?: (e: any) => void,
   inputDisabled: boolean;
@@ -20,15 +19,20 @@ export const Header = (props: IHeader) => {
   const dispatch = useAppDispatch();
   const { searchText, updateValue, handleKeyDown, inputDisabled, handleClickButton } = props;
   const { email: currentEmail } = useAppSelector((state: any) => state.userReducer);
-  
-  const exit = (e: any) => dispatch(removeUser());
+
+  const exit = () => dispatch(removeUser());
 
   return (
     <>
       <div className="header" data-testid="header">
 
         <div className="header__search">
-          <div className="button"><Link href="/"><Image src={photo} alt="photo" width={30}></Image> Photos</Link></div>
+          <div className="button">
+            <Link href="/">
+              <Image src={photo} alt="photo" width={30}></Image>
+              Photos
+            </Link>
+          </div>
           <input
             disabled={inputDisabled}
             placeholder='Search photo..'
@@ -37,7 +41,7 @@ export const Header = (props: IHeader) => {
             onChange={updateValue}
             onKeyDown={handleKeyDown}
           />
-         <Image src={search} alt='search' width={30} height={30} onClick={handleClickButton}></Image>
+          <Image src={search} alt='search' width={30} height={30} onClick={handleClickButton}></Image>
         </div>
 
         {currentEmail ?

@@ -48,7 +48,8 @@ export const sendPhotoToFavorite = (url: string, email: string) => {
 
     if (photos) {
         const newData = JSON.parse(photos);
-        newData.push(url);
+        const existedUrl = newData.find((e: string ) => e === url);
+        if (!existedUrl) newData.push(url);
         localStorage[email] = JSON.stringify(newData);
     }
 };
