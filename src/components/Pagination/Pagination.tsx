@@ -12,6 +12,7 @@ export default function Pagination(props: { isHide: boolean } ) {
 
   useEffect(() => {
     dispatch(fetchUpdatePagePhotos(currentPage));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   const nextPage = () => {

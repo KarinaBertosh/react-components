@@ -119,6 +119,7 @@ body {
 .header__search {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 550px;
 }
 
@@ -258,6 +259,25 @@ a:hover {
     font-size: 26px;
     font-weight: 700;
   }
+
+  .search-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .photo-page__navbar {
+    width: 90px;
+  }
+
+  .photo-page__navbar img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .photo-page__navbar img:hover {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media screen and (min-width: 510px) and (max-width: 820px) {
@@ -289,5 +309,20 @@ a:hover {
   .photo {
     width: 200px;
     height: 200px;
+  }
+
+  .search-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .photo-page__navbar img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .photo-page__navbar img:hover {
+    width: 45px;
+    height: 45px;
   }
 }

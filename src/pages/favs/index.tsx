@@ -17,6 +17,7 @@ export default function FavsPage() {
       const parsedData = JSON.parse(photos);
       setPhotos(parsedData);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const remotePhoto = (url: string) => {
