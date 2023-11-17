@@ -3,20 +3,22 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import photo from '../../assets/photo.png';
+import search from '../../assets/search.png';
 import { useAppDispatch, useAppSelector } from '@/hook/redux';
 import { removeUser } from '@/store/reducers/UserAuth';
 
 
 interface IHeader {
   searchText?: string,
-  saveChange?: (e: any) => void,
+  updateValue?: (e: any) => void,
   handleKeyDown?: (e: any) => void,
+  handleClickButton?: (e: any) => void,
   inputDisabled: boolean;
 }
 
 export const Header = (props: IHeader) => {
   const dispatch = useAppDispatch();
-  const { searchText, saveChange, handleKeyDown, inputDisabled } = props;
+  const { searchText, updateValue, handleKeyDown, inputDisabled, handleClickButton } = props;
   const { email: currentEmail } = useAppSelector((state: any) => state.userReducer);
   
   const exit = (e: any) => dispatch(removeUser());
@@ -30,13 +32,12 @@ export const Header = (props: IHeader) => {
           <input
             disabled={inputDisabled}
             placeholder='Search photo..'
-            role="search"
-            type="search"
             className="header__search__input"
             value={searchText}
-            onChange={saveChange}
+            onChange={updateValue}
             onKeyDown={handleKeyDown}
           />
+         <Image src={search} alt='search' width={30} height={30} onClick={handleClickButton}></Image>
         </div>
 
         {currentEmail ?

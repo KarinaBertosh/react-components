@@ -7,7 +7,6 @@ import { useState } from 'react';
 import Photo from '../Photo/Photo';
 import Pagination from '../Pagination/Pagination';
 import React from "react";
-import { saveAs } from "file-saver";
 
 
 export const Photos = (props: IPhotosProps): JSX.Element => {
@@ -16,16 +15,6 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [currentUrl, setCurrentUrl] = useState<string>('');
   const [isHidePagination, setIsHidePagination] = useState<boolean>(false);
-
-  // const sendPhotoToFavorite = (url: string) => {
-  //   const photos = localStorage.getItem(email) || JSON.stringify([]);
-
-  //   if (photos) {
-  //     const newData = JSON.parse(photos);
-  //     newData.push(url);
-  //     localStorage[email] = JSON.stringify(newData);
-  //   }
-  // };
 
   const openModal = (url: string) => {
     setCurrentUrl(url);
@@ -42,17 +31,18 @@ export const Photos = (props: IPhotosProps): JSX.Element => {
       {isOpenModal
         ? <Photo url={currentUrl} email={email} setOpenModal={() => setOpenModal()}></Photo>
         : <div className="photos">
-          {photos.map((photo: IPhoto) => (
-            <div key={photo.urls.regular} style={{ position: 'relative' }}>
-              <Image className="download" src={download} alt='download-reverse' width={60} onClick={() => downloadPhoto(photo.urls.regular)} />
-              <Image className="heart" src={heart} alt='heart' width={50} onClick={() => sendPhotoToFavorite(photo.urls.regular, email)} />
-              <Image src={photo.urls.regular} alt={photo.urls.regular} className="photo" width={1000} height={1000} priority={true} onClick={() => openModal(photo.urls.regular)} />
-            </div>
-          ))}
+          {photos.length
+            ? photos.map((photo: IPhoto) => (
+              <div key={photo.urls.regular} style={{ position: 'relative' }}>
+                <Image className="download" src={download} alt='download-reverse' width={60} onClick={() => downloadPhoto(photo.urls.regular)} />
+                <Image className="heart" src={heart} alt='heart' width={50} onClick={() => sendPhotoToFavorite(photo.urls.regular, email)} />
+                <Image src={photo.urls.regular} alt={photo.urls.regular} className="photo" width={1000} height={1000} priority={true} onClick={() => openModal(photo.urls.regular)} />
+              </div>
+            ))
+            : 'No matches'
+          }
         </div>
-
       }
-
       <Pagination isHide={!isHidePagination} />
     </div>);
 };
